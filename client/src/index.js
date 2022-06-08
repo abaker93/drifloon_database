@@ -1,21 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from 'react-router-dom';
+import React from "react";
+import * as ReactDOMClient from "react-dom/client";
+import App from "./App";
+import "./styles/main.scss";
 
-import App from './App';
-import Home from './Home';
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<App />}>
-        <Route index element={<Home />} />
-      </Route>
-    </Routes>
-  </BrowserRouter>
-);
+ReactDOMClient.createRoot(document.getElementById("root")).render(<App />);

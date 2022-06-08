@@ -1,3 +1,5 @@
+// tutorial: https://betterprogramming.pub/make-a-team-roster-with-node-react-and-google-sheets-305b9f9ebbb1
+
 const { TablesServiceClient } = require('@google/area120-tables').v1alpha1;
 const express = require('express')()
 require('dotenv').config()
@@ -99,7 +101,9 @@ express.get('/api/data', async (request, response) => {
 				spd50Max: gen1IR.values.spd50Max ? gen1IR.values.spd50Max.numberValue : n,
 				spd100Min: gen1IR.values.spd100Min ? gen1IR.values.spd100Min.numberValue : n,
 				spd100Max: gen1IR.values.spd100Max ? gen1IR.values.spd100Max.numberValue : n,
+				updateTime: gen1IR.values.updateTime ? gen1IR.values.updateTime.structValue.fields.seconds.numberValue : n,
 			},
+			data: gen1IR.values,
 		})
   }
 
