@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+	const [national, setNational] = useState([])
+
+	useEffect(() => {
+		const getNational = async () => {
+			const fetchedNational = await fetch('/api/data', {
+					method: 'GET',
+					credentials: 'same-origin',
+			})
+			const read = await fetchedNational.json()
+			setNational(read.national)
+		}
+		
+		getNational()
+	}, [])
+
+	return (
+		<>
+			{national.map((poke, i) => (
+				<div key={i}>
+						<img src={poke.values.artwork} alt={`${poke.values.name} artwork`} />
+						{poke.values.national} | {poke.values.name}
+				</div>
+			))}
+		</>
+	)
 }
 
-export default App;
+export default App

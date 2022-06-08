@@ -5,12 +5,7 @@ const p = process.env
 
 express.get('/api/data', async (request, response) => {
 	const tablesClient = new TablesServiceClient();
-  const variables = {
-    parent: p.parent,
-  };
-
-	const arr = [];
-
+	const n = null;
 	// const keys = [
 	// 	'id',							'national',				'name',
 	// 	'spriteNormalRB',	'spriteNormalY',	'spriteBackRB',
@@ -31,73 +26,87 @@ express.get('/api/data', async (request, response) => {
 	// 	'spd50Max',				'spd100Min',			'spd100Max'
 	// ]
 
-	const iterable = await tablesClient.listRowsAsync(variables);
-
-  for await (const iterableResponse of iterable) {
-		const n = null
-    
-		arr.push({
-			name: iterableResponse.name,
+	const nationalDex = [];
+	const nationalIterable = await tablesClient.listRowsAsync({parent: p.NATIONAL_DEX_TABLE});
+  for await (const ndIR of nationalIterable) {
+		nationalDex.push({
+			name: ndIR.name,
 			values: {
-				// look into this later... there has to be a way to do this and make cleaner code
-				// keys.map(key => [
-				// 	'key': iterableResponse.values[key],
-				// ])
-				id: iterableResponse.values.id ? iterableResponse.values.id.stringValue : n,
-				national: iterableResponse.values.national ? iterableResponse.values.national.numberValue : n,
-				name: iterableResponse.values.name ? iterableResponse.values.name.stringValue : n,
-				spriteNormalRB: iterableResponse.values.spriteNormalRB ? iterableResponse.values.spriteNormalRB.stringValue : n,
-				spriteNormalY: iterableResponse.values.spriteNormalY ? iterableResponse.values.spriteNormalY.stringValue : n,
-				spriteBackRB: iterableResponse.values.spriteBackRB ? iterableResponse.values.spriteBackRB.stringValue : n,
-				spriteBackY: iterableResponse.values.spriteBackY ? iterableResponse.values.spriteBackY.stringValue : n,
-				category: iterableResponse.values.category ? iterableResponse.values.category.stringValue : n,
-				type1: iterableResponse.values.type1 ? iterableResponse.values.type1.stringValue : n,
-				type2: iterableResponse.values.type2 ? iterableResponse.values.type2.stringValue : n,
-				kantoDex: iterableResponse.values.kantoDex ? iterableResponse.values.kantoDex.numberValue : n,
-				redText: iterableResponse.values.redText ? iterableResponse.values.redText.stringValue : n,
-				greenText: iterableResponse.values.greenText ? iterableResponse.values.greenText.stringValue : n,
-				blueText: iterableResponse.values.blueText ? iterableResponse.values.blueText.stringValue : n,
-				yellowText: iterableResponse.values.yellowText ? iterableResponse.values.yellowText.stringValue : n,
-				height: iterableResponse.values.height ? iterableResponse.values.height.numberValue : n,
-				weight: iterableResponse.values.weight ? iterableResponse.values.weight.numberValue : n,
-				catchRateRB: iterableResponse.values.catchRateRB ? iterableResponse.values.catchRateRB.numberValue : n,
-				catchRateY: iterableResponse.values.catchRateY ? iterableResponse.values.catchRateY.numberValue : n,
-				xpGrowth: iterableResponse.values.xpGrowth ? iterableResponse.values.xpGrowth.numberValue : n,
-				growthRate: iterableResponse.values.growthRate ? iterableResponse.values.growthRate.stringValue : n,
-				japanese: iterableResponse.values.japanese ? iterableResponse.values.japanese.stringValue : n,
-				japaneseKata: iterableResponse.values.japaneseKata ? iterableResponse.values.japaneseKata.stringValue : n,
-				french: iterableResponse.values.french ? iterableResponse.values.french.stringValue : n,
-				german: iterableResponse.values.german ? iterableResponse.values.german.stringValue : n,
-				korean: iterableResponse.values.korean ? iterableResponse.values.korean.stringValue : n,
-				hp: iterableResponse.values.hp ? iterableResponse.values.hp.numberValue : n,
-				hp50Min: iterableResponse.values.hp50Min ? iterableResponse.values.hp50Min.numberValue : n,
-				hp50Max: iterableResponse.values.hp50Max ? iterableResponse.values.hp50Max.numberValue : n,
-				hp100Min: iterableResponse.values.hp100Min ? iterableResponse.values.hp100Min.numberValue : n,
-				hp100Max: iterableResponse.values.hp100Max ? iterableResponse.values.hp100Max.numberValue : n,
-				att: iterableResponse.values.att ? iterableResponse.values.att.numberValue : n,
-				att50Min: iterableResponse.values.att50Min ? iterableResponse.values.att50Min.numberValue : n,
-				att50Max: iterableResponse.values.att50Max ? iterableResponse.values.att50Max.numberValue : n,
-				att100Min: iterableResponse.values.att100Min ? iterableResponse.values.att100Min.numberValue : n,
-				att100Max: iterableResponse.values.att100Max ? iterableResponse.values.att100Max.numberValue : n,
-				def: iterableResponse.values.def ? iterableResponse.values.def.numberValue : n,
-				def100Max: iterableResponse.values.def100Max ? iterableResponse.values.def100Max.numberValue : n,
-				def100Min: iterableResponse.values.def100Min ? iterableResponse.values.def100Min.numberValue : n,
-				sp: iterableResponse.values.sp ? iterableResponse.values.sp.numberValue : n,
-				sp50Min: iterableResponse.values.sp50Min ? iterableResponse.values.sp50Min.numberValue : n,
-				sp50Max: iterableResponse.values.sp50Max ? iterableResponse.values.sp50Max.numberValue : n,
-				sp100Min: iterableResponse.values.sp100Min ? iterableResponse.values.sp100Min.numberValue : n,
-				sp100Max: iterableResponse.values.sp100Max ? iterableResponse.values.sp100Max.numberValue : n,
-				spd: iterableResponse.values.spd ? iterableResponse.values.spd.numberValue : n,
-				spd50Min: iterableResponse.values.spd50Min ? iterableResponse.values.spd50Min.numberValue : n,
-				spd50Max: iterableResponse.values.spd50Max ? iterableResponse.values.spd50Max.numberValue : n,
-				spd100Min: iterableResponse.values.spd100Min ? iterableResponse.values.spd100Min.numberValue : n,
-				spd100Max: iterableResponse.values.spd100Max ? iterableResponse.values.spd100Max.numberValue : n,
+				id: ndIR.values.id ? ndIR.values.id.stringValue : n,
+				national: ndIR.values.national ? ndIR.values.national.numberValue : n,
+				name: ndIR.values.name ? ndIR.values.name.stringValue : n,
+				artwork: ndIR.values.artwork ? ndIR.values.artwork.stringValue : n,
 			},
-			// data: iterableResponse.values
 		})
   }
 
-	response.json(arr)
+	const gen1 = [];
+	const gen1Iterable = await tablesClient.listRowsAsync({parent: p.GEN_1_TABLE});
+  for await (const gen1IR of gen1Iterable) {
+		gen1.push({
+			name: gen1IR.name,
+			values: {
+				// look into this later... there has to be a way to do this and make cleaner code
+				// keys.map(key => [
+				// 	'key': gen1IR.values[key],
+				// ])
+				id: gen1IR.values.id ? gen1IR.values.id.stringValue : n,
+				national: gen1IR.values.national ? gen1IR.values.national.numberValue : n,
+				name: gen1IR.values.name ? gen1IR.values.name.stringValue : n,
+				spriteNormalRB: gen1IR.values.spriteNormalRB ? gen1IR.values.spriteNormalRB.stringValue : n,
+				spriteNormalY: gen1IR.values.spriteNormalY ? gen1IR.values.spriteNormalY.stringValue : n,
+				spriteBackRB: gen1IR.values.spriteBackRB ? gen1IR.values.spriteBackRB.stringValue : n,
+				spriteBackY: gen1IR.values.spriteBackY ? gen1IR.values.spriteBackY.stringValue : n,
+				category: gen1IR.values.category ? gen1IR.values.category.stringValue : n,
+				type1: gen1IR.values.type1 ? gen1IR.values.type1.stringValue : n,
+				type2: gen1IR.values.type2 ? gen1IR.values.type2.stringValue : n,
+				kantoDex: gen1IR.values.kantoDex ? gen1IR.values.kantoDex.numberValue : n,
+				redText: gen1IR.values.redText ? gen1IR.values.redText.stringValue : n,
+				greenText: gen1IR.values.greenText ? gen1IR.values.greenText.stringValue : n,
+				blueText: gen1IR.values.blueText ? gen1IR.values.blueText.stringValue : n,
+				yellowText: gen1IR.values.yellowText ? gen1IR.values.yellowText.stringValue : n,
+				height: gen1IR.values.height ? gen1IR.values.height.numberValue : n,
+				weight: gen1IR.values.weight ? gen1IR.values.weight.numberValue : n,
+				catchRateRB: gen1IR.values.catchRateRB ? gen1IR.values.catchRateRB.numberValue : n,
+				catchRateY: gen1IR.values.catchRateY ? gen1IR.values.catchRateY.numberValue : n,
+				xpGrowth: gen1IR.values.xpGrowth ? gen1IR.values.xpGrowth.numberValue : n,
+				growthRate: gen1IR.values.growthRate ? gen1IR.values.growthRate.stringValue : n,
+				japanese: gen1IR.values.japanese ? gen1IR.values.japanese.stringValue : n,
+				japaneseKata: gen1IR.values.japaneseKata ? gen1IR.values.japaneseKata.stringValue : n,
+				french: gen1IR.values.french ? gen1IR.values.french.stringValue : n,
+				german: gen1IR.values.german ? gen1IR.values.german.stringValue : n,
+				korean: gen1IR.values.korean ? gen1IR.values.korean.stringValue : n,
+				hp: gen1IR.values.hp ? gen1IR.values.hp.numberValue : n,
+				hp50Min: gen1IR.values.hp50Min ? gen1IR.values.hp50Min.numberValue : n,
+				hp50Max: gen1IR.values.hp50Max ? gen1IR.values.hp50Max.numberValue : n,
+				hp100Min: gen1IR.values.hp100Min ? gen1IR.values.hp100Min.numberValue : n,
+				hp100Max: gen1IR.values.hp100Max ? gen1IR.values.hp100Max.numberValue : n,
+				att: gen1IR.values.att ? gen1IR.values.att.numberValue : n,
+				att50Min: gen1IR.values.att50Min ? gen1IR.values.att50Min.numberValue : n,
+				att50Max: gen1IR.values.att50Max ? gen1IR.values.att50Max.numberValue : n,
+				att100Min: gen1IR.values.att100Min ? gen1IR.values.att100Min.numberValue : n,
+				att100Max: gen1IR.values.att100Max ? gen1IR.values.att100Max.numberValue : n,
+				def: gen1IR.values.def ? gen1IR.values.def.numberValue : n,
+				def100Max: gen1IR.values.def100Max ? gen1IR.values.def100Max.numberValue : n,
+				def100Min: gen1IR.values.def100Min ? gen1IR.values.def100Min.numberValue : n,
+				sp: gen1IR.values.sp ? gen1IR.values.sp.numberValue : n,
+				sp50Min: gen1IR.values.sp50Min ? gen1IR.values.sp50Min.numberValue : n,
+				sp50Max: gen1IR.values.sp50Max ? gen1IR.values.sp50Max.numberValue : n,
+				sp100Min: gen1IR.values.sp100Min ? gen1IR.values.sp100Min.numberValue : n,
+				sp100Max: gen1IR.values.sp100Max ? gen1IR.values.sp100Max.numberValue : n,
+				spd: gen1IR.values.spd ? gen1IR.values.spd.numberValue : n,
+				spd50Min: gen1IR.values.spd50Min ? gen1IR.values.spd50Min.numberValue : n,
+				spd50Max: gen1IR.values.spd50Max ? gen1IR.values.spd50Max.numberValue : n,
+				spd100Min: gen1IR.values.spd100Min ? gen1IR.values.spd100Min.numberValue : n,
+				spd100Max: gen1IR.values.spd100Max ? gen1IR.values.spd100Max.numberValue : n,
+			},
+		})
+  }
+
+	response.json({
+		national: nationalDex,
+		gen1: gen1
+	})
 	
 })
 
