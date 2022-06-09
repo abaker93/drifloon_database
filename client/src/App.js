@@ -1,5 +1,9 @@
 import React, { lazy } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 import { StyledEngineProvider } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
@@ -7,11 +11,12 @@ import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "./theme";
 
 const Home = lazy(() => import("./routes/Home"));
+const Game = lazy(() => import("./routes/Game"));
 const Pokedex = lazy(() => import("./routes/Pokedex"));
 const Pokemon = lazy(() => import("./routes/Pokemon"));
 const Gradients = lazy(() => import("./routes/Gradients"));
 
-export default function App() {
+const App = () => {
   return (
     <>
       <StyledEngineProvider injectFirst>
@@ -21,8 +26,9 @@ export default function App() {
               <Route path="/">
                 <Route index element={<Home />} />
                 <Route path="gradients" element={<Gradients />} />
-                <Route path="pokedex">
-                  <Route path=":pokedex">
+                <Route path=":game">
+                  <Route index element={<Game />} />
+                  <Route path="pokedex">
                     <Route index element={<Pokedex />} />
                     <Route path=":pokedexId">
                       <Route index element={<Pokemon />} />
@@ -39,6 +45,7 @@ export default function App() {
   );
 }
 
+export default App
 
 
 
