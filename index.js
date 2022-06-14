@@ -1,6 +1,6 @@
 // tutorial: https://betterprogramming.pub/make-a-team-roster-with-node-react-and-google-sheets-305b9f9ebbb1
 
-import { RateLimiter } from 'limiter';
+// import { RateLimiter } from 'limiter';
 
 const { TablesServiceClient } = require('@google/area120-tables').v1alpha1;
 const express = require('express')()
@@ -11,7 +11,7 @@ express.get('/api/data', async (request, response) => {
 	const tablesClient = new TablesServiceClient();
 	const n = null;
 
-	const limiter = new RateLimiter({ tokensPerInterval: 10, interval: "second" });
+	// const limiter = new RateLimiter({ tokensPerInterval: 10, interval: "second" });
 
 	// const keys = [
 	// 	'id',							'national',				'name',
