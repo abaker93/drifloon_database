@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js -ignore './client' ",
+    "start": "node server.js -ignore './client' ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,9 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "@google/area120-tables": "^2.0.0",
+    "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "googleapis": "^101.0.0",
-    "limiter": "^2.1.0"
+    "limiter": "^2.1.0",
+    "redis": "^4.1.0"
   }
 }
