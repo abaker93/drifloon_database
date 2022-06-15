@@ -24,7 +24,7 @@ const Game = () => {
 	const getDex = GetDex(dex);
 
 	return (
-		<React.Fragment id="Game">
+		<Box id="Game">
 			<Header />
 				
 				<Container maxWidth="xl" sx={{ mt: 10 }}>
@@ -80,7 +80,7 @@ const Game = () => {
 				</Container>
 
 			<Footer />
-		</React.Fragment>
+		</Box>
 	)
 }
 

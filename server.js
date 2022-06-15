@@ -99,6 +99,7 @@ async function callListRows(key) {
 				spd100Min:	pokemon.values.spd100Min	? pokemon.values.spd100Min.numberValue	: n,
 				spd100Max:	pokemon.values.spd100Max	? pokemon.values.spd100Max.numberValue	: n,
 				
+				artwork:			pokemon.values.artwork			?	pokemon.values.artwork.stringValue			: n,
 				spriteNorRB:	pokemon.values.spriteNorRB	? pokemon.values.spriteNorRB.stringValue	: n,
 				spriteNorY:		pokemon.values.spriteNorY		? pokemon.values.spriteNorY.stringValue		: n,
 				spriteBackRB:	pokemon.values.spriteBackRB	? pokemon.values.spriteBackRB.stringValue	: n,
@@ -194,6 +195,7 @@ async function callListRows(key) {
 					spd100Min:		pokemon.values.spd100Min		? pokemon.values.spd100Min.numberValue		: n,
 					spd100Max:		pokemon.values.spd100Max		? pokemon.values.spd100Max.numberValue		: n,
 					
+					artwork:	pokemon.values.artwork	?	pokemon.values.artwork.stringValue	: n,
 					// spriteNorRB:	pokemon.values.spriteNorRB	? pokemon.values.spriteNorRB.stringValue	: n,
 					// spriteNorY:		pokemon.values.spriteNorY		? pokemon.values.spriteNorY.stringValue		: n,
 					// spriteBackRB:	pokemon.values.spriteBackRB	? pokemon.values.spriteBackRB.stringValue	: n,

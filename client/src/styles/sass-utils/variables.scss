@@ -1,0 +1,25 @@
+@import '../base/colors';
+
+$primaryFont: 'source-sans-3', sans-serif;
+
+$types: (
+	( 'bug', $bug, $bugLight, $bugDark ),
+	( 'dark', $dark, $darkLight, $darkDark ),
+	( 'dragon', $dragon, $dragonLight, $dragonDark ),
+	( 'electric', $electric, $electricLight, $electricDark ),
+	( 'fairy', $fairy, $fairyLight, $fairyDark ),
+	( 'fighting', $fighting, $fightingLight, $fightingDark ),
+	( 'fire', $fire, $fireLight, $fireDark ),
+	( 'flying', $flying, $flyingLight, $flyingDark ),
+	( 'ghost', $ghost, $ghostLight, $ghostDark ),
+	( 'grass', $grass, $grassLight, $grassDark ),
+	( 'ground', $ground, $groundLight, $groundDark ),
+	( 'ice', $ice, $iceLight, $iceDark ),
+	( 'normal', $normal, $normalLight, $normalDark ),
+	( 'poison', $poison, $poisonLight, $poisonDark ),
+	( 'psychic', $psychic, $psychicLight, $psychicDark ),
+	( 'rock', $rock, $rockLight, $rockDark ),
+	( 'steel', $steel, $steelLight, $steelDark ),
+	( 'water', $water, $waterLight, $waterDark ),
+	( '???', $unknown, $unknownLight, $unknownDark )
+);

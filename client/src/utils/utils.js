@@ -184,6 +184,6 @@ export const formatDexNum = (num) => {
 	return num;
 };
 
-export const totalStats = (hp, att, def, spatt, spdef, spd) => {
-	return hp + att + def + spatt + spdef + spd;
+export const totalStats = (...stats) => {
+	return stats.reduce((sum, a) => sum + a, 0);
 };
