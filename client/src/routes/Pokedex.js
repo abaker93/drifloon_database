@@ -2,6 +2,9 @@ import React from "react";
 
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import Chip from '@mui/material/Chip';
 
 import { useParams } from "react-router-dom";
@@ -15,12 +18,15 @@ const Pokedex = () => {
 
 	const dex = ChooseDex(params.game).dex;
 	const dexTitle = ChooseDex(params.game).dexTitle;
+	// const gameTitle = ChooseDex(params.game).gameTitle;
+	const primary = ChooseDex(params.game).primary;
+	const artwork = ChooseDex(params.game).artwork;
 
 	const getDex = GetDex(dex);
-	const latestDex = GetDex('gen8');
+	// const latestDex = GetDex('gen8');
 
 	return (
-		<>
+		<Box id="Pokedex">
 			<Header />
 			
 			<Container maxWidth="xl" sx={{ mt: 10 }}>
@@ -29,63 +35,64 @@ const Pokedex = () => {
 				</Box>
 			</Container>
 
-			<Container maxWidth='xl' sx={{ mt: 4 }}>
-				<Box>
-					{getDex.map((p) => (
-						<Box key={p.id}>
-							<img style={{ width: '100px' }} src={p.artwork} alt={p.name} />
-							<p><span className="no">No.</span> {formatDexNum(p.national)}</p>
-							<h2>{p.name}</h2>
-							{dex==='national'
-								? latestDex
-									.filter(pName => pName.name === p.name)
-									.map(poke => (
-										<div key={poke.id}>
-											<div>
-												<Chip label={poke.type1} size="small" />
-												{poke.type2 ? <Chip label={poke.type2} size="small" /> : null}
-											</div>
-											<div>
-												<div>
-													<p>HP</p>
-													<p>{poke.hp}</p>
-												</div>
-												<div>
-													<p>Att</p>
-													<p>{poke.att}</p>
-												</div>
-												<div>
-													<p>Def</p>
-													<p>{poke.def}</p>
-												</div>
-												<div>
-													<p>Sp.A</p>
-													<p>{poke.spAtt}</p>
-												</div>
-												<div>
-													<p>Sp.D</p>
-													<p>{poke.spDef}</p>
-												</div>
-												<div>
-													<p>Spd</p>
-													<p>{poke.spd}</p>
-												</div>
-												<div>
-													<p>Total</p>
-													<p>{totalStats(poke.hp, poke.att, poke.def, poke.spAtt, poke.spDef, poke.spd)}</p>
-												</div>
-											</div>
-										</div>
-									))
-								: 'not national'
-							}
-						</Box>
+			<Container maxWidth="xl" sx={{ mt: 10 }}>
+				<Box className="pokedex">
+					{getDex.map(p => (
+						<Link key={p.id} className="pokemon" href={`/${params.game}/pokedex/${formatDexNum(p[primary])}`} underline="none">
+							<Card>
+								<CardContent>
+									<img src={p[artwork]} alt={p.name} />
+									<Box className="info">
+										<p><span className="no">No.</span>{formatDexNum(p[primary])}</p>
+										<h3>{p.name}</h3>
+										<Box className="types">
+											<Chip label={p.type1} size="small" />
+											{p.type2 ? <Chip label={p.type2} size="small" /> : null}
+										</Box>
+										<Box className="stats">
+											<Box>
+												<p>HP</p>
+												<p>{p.hp}</p>
+											</Box>
+											<Box>
+												<p>Att</p>
+												<p>{p.att}</p>
+											</Box>
+											<Box>
+												<p>Def</p>
+												<p>{p.def}</p>
+											</Box>
+											
+											<Box>
+												<p>Sp.A</p>
+												<p>{p.spAtt}</p>
+											</Box>
+											<Box>
+												<p>Sp.D</p>
+												<p>{p.spDef}</p>
+											</Box>
+
+											<Box>
+												<p>Spd</p>
+												<p>{p.spd}</p>
+											</Box>
+
+											<Box>
+												<p>Total</p>
+												<p>{totalStats(p.hp, p.att, p.def, p.spAtt, p.spDef, p.spd)}</p>
+											</Box>
+										</Box>
+									</Box>
+								</CardContent>
+							</Card>
+						</Link>
 					))}
 				</Box>
 			</Container>
 
+
 			<Footer />
-		</>
+		</Box>
 	)
 }
 

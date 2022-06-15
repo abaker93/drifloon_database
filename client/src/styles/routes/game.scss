@@ -1,32 +1,36 @@
 @import '../base/colors.scss';
 
-.pokedex {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	column-gap: 20px;
-	row-gap: 20px;
-
-	.pokemon {
-		text-align: center;
-
-		h3 { font-size: 18px; }
-
-		.no {
-			color: $textLight;
-			font-size: 10px;
-		}
-
-		.types {
-			display: grid;
-			grid-template-columns: repeat(2, max-content);
-			justify-content: center;
-
-			p {
-				font-size: 12px;
-
-				span { margin: 0 5px; }
+#Game {
+	.pokedex {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		column-gap: 20px;
+		row-gap: 20px;
+	
+		.pokemon {
+			text-align: center;
+	
+			img { max-width: 100%; }
+	
+			.no {
+				color: $textLight;
+				font-size: 10px;
+			}
+	
+			h3 { font-size: 18px; }
+	
+			.types {
+				display: grid;
+				grid-template-columns: repeat(2, max-content);
+				justify-content: center;
+	
+				p {
+					font-size: 12px;
+	
+					span { margin: 0 5px; }
+				}
 			}
 		}
 	}
-
 }
+

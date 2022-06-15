@@ -1,0 +1,19 @@
+#Pokedex {
+	color: blue;
+
+	.pokedex {
+
+		.pokemon {
+
+			.MuiCardContent-root {
+				display: grid;
+				grid-template-columns: 100px auto;
+				img {
+					position: relative;
+					top: -30px;
+					width: 100px;
+				}
+			}
+		}
+	}
+}

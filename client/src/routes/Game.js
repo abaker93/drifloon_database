@@ -3,7 +3,6 @@ import React from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
-// import Chip from "@mui/material/Chip";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
@@ -25,7 +24,7 @@ const Game = () => {
 	const getDex = GetDex(dex);
 
 	return (
-		<>
+		<React.Fragment id="Game">
 			<Header />
 				
 				<Container maxWidth="xl" sx={{ mt: 10 }}>
@@ -81,7 +80,7 @@ const Game = () => {
 				</Container>
 
 			<Footer />
-		</>
+		</React.Fragment>
 	)
 }
 
