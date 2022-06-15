@@ -1,0 +1,62 @@
+//	styles
+//	|--main.scss
+//	|
+//	|--base/
+//	|		|--base.scss
+//	|		|--colors.scss
+//	|		|--gradients.scss
+//	|		|--mui.scss
+//	|		|--reset.scss
+//	|		|--typography.scss
+//	|
+//	|--components/
+//	|
+//	|--layout/
+//	|		|--footer.scss
+//	|		|--header.scss
+//	|		|--navigation.scss
+//	|
+//	|--routes/
+//	|		|--game.scss
+//	|		|--gradients.scss
+//	|		|--home.scss
+//	|		|--pokedex.scss
+//	|		|--pokemon.scss
+//	|
+//	|--sass-utils/
+//	|		|--functions.scss
+//	|		|--helpers.scss
+//	|		|--mixins.scss
+//	|		|--variables.scss
+
+//		BASE
+@import './base/_base.scss';
+@import './base/colors.scss';
+@import './base/gradients.scss';
+@import './base/mui.scss';
+@import './base/reset.scss';
+@import './base/typography.scss';
+
+//		COMPONENTS
+@import './components/_components.scss';
+
+//		LAYOUT
+@import './layout/_layout.scss';
+@import './layout/footer.scss';
+@import './layout/header.scss';
+@import './layout/navigation.scss';
+
+//		ROUTES
+@import './routes/_routes.scss';
+@import './routes/game.scss';
+@import './routes/gradients.scss';
+@import './routes/home.scss';
+@import './routes/pokedex.scss';
+@import './routes/pokemon.scss';
+
+//		SASS-UTILS
+@import './sass-utils/_sass-utils.scss';
+@import './sass-utils/functions.scss';
+@import './sass-utils/helpers.scss';
+@import './sass-utils/mixins.scss';
+@import './sass-utils/variables.scss';

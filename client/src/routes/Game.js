@@ -1,51 +1,23 @@
 import React from "react";
 
-import { useParams } from "react-router-dom";
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import Chip from "@mui/material/Chip";
 
+import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { GetDex } from '../utils/GetDex';
+import { ChooseDex, formatDexNum } from '../utils/utils';
 
 const Game = () => {
 	const params = useParams();
 
-	let paramsDex;
+	const dex = ChooseDex(params.game).dex;
+	const gameTitle = ChooseDex(params.game).gameTitle;
 
-	const game = url => {
-		switch(url) {
-			case 'national':
-				paramsDex = 'national';
-				return 'National Pokédex';
-			case 'red-blue':
-				paramsDex = 'gen1';
-				return 'Red & Blue';
-			case 'yellow':
-				paramsDex = 'gen1';
-				return 'Yellow';
-			default:
-				paramsDex = 'national';
-				return 'Not a valid game';
-		}
-	}
-
-	console.log(paramsDex)
-	
-	// const [dex, setDex] = useState([])
-
-	// useEffect(() => {
-	// 	const getAPI = async () => {
-	// 		const fetchedNational = await fetch('/api/data', {
-	// 				method: 'GET',
-	// 				// credentials: 'same-origin',
-	// 		})
-	// 		const read = await fetchedNational.json()
-	// 		setDex(read.national)
-	// 	}
-		
-	// 	getAPI()
-
-	// })
+	const getDex = GetDex(dex);
 
 	return (
 		<>
@@ -53,19 +25,25 @@ const Game = () => {
 				
 				<Container maxWidth="xl" sx={{ mt: 10 }}>
 					<Box>
-						<h1>{game(params.game)}</h1>
+						<h1>{gameTitle}</h1>
 					</Box>
 				</Container>
 
 				<Container maxWidth="xl" sx={{ mt: 4 }}>
 					<Box>
-						{/* {dex.map((pokemon, i) => (
-							<div key={i}>
-								<img style={{ width: '100px' }} src={pokemon.values.artwork} alt={`${pokemon.values.name}`} />
-								<p>{pokemon.values.national} | {pokemon.values.name}</p>
-								<p>{pokemon.values.type1} | {pokemon.values.type2}</p>
-							</div>
-						))} */}
+						{getDex.map(p => (
+							<Link href={`/${params.game}/pokedex/${formatDexNum(p.national)}`} underline="none">
+								<Box key={p.id}>
+									<img style={{ width: '100px'}} src={p.artwork} alt={p.name} />
+									<p><span className="no">No.</span> {formatDexNum(p.national)}</p>
+									<h2>{p.name}</h2>
+									<div>
+										<Chip label={p.type1} size="small" />
+										{p.type2 ? <Chip label={p.type2} size="small" /> : null}
+									</div>
+								</Box>
+							</Link>
+						))}
 					</Box>
 				</Container>
 

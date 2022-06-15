@@ -14,6 +14,9 @@ const Header = () => {
 		<Box id="Header">
 			<AppBar>
 				<Toolbar>
+					<Box>
+						<p>Drifloon Database</p>
+					</Box>
 					<Box sx={{ flexGrow: 1 }} />
 					<IconButton edge="start" aria-label="settings">
 						<SettingsIcon />

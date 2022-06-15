@@ -1,0 +1,130 @@
+$black: hsl(0, 0%, 0%);
+$white: hsl(0, 0%, 100%);
+$grayLight: hsl(0, 0%, 90%);
+
+$bodyBackground: hsl(0, 0%, 96%);
+
+$text: 			hsl(0, 0%, 27%);
+$textLight: hsl(0, 0%, 70%);
+
+$primary:			 hsl(271, 34%, 52%);
+$primaryLight: hsl(271, 34%, 72%);
+$primaryDark:	 hsl(271, 34%, 32%);
+
+$bug:       		hsl(79, 63%, 46%);
+$bugLight:			hsl(78, 53%, 57%);
+$bugDark:				hsl(79, 63%, 32%);
+
+$dark:      		hsl(267, 10%, 36%);
+$darkLight:			hsl(270, 2%, 47%);
+$darkDark:			hsl(260, 2%, 24%);
+
+$dragon:   			hsl(208, 91%, 40%);
+$dragonLight:		hsl(209, 61%, 53%);
+$dragonDark:		hsl(209, 89%, 28%);
+
+$electric:		  hsl(49, 89%, 59%);
+$electricLight:	hsl(49, 89%, 67%);
+$electricDark:	hsl(49, 61%, 41%);
+
+$fairy:     		hsl(303, 71%, 75%);
+$fairyLight:		hsl(305, 75%, 79%);
+$fairyDark:			hsl(305, 28%, 52%);
+
+$fighting:  		hsl(342, 59%, 53%);
+$fightingLight:	hsl(342, 55%, 62%);
+$fightingDark:	hsl(342, 51%, 36%);
+
+$fire: 			    hsl(26, 99%, 66%);
+$fireLight:			hsl(26, 90%, 73%);
+$fireDark:			hsl(26, 47%, 46%);
+
+$flying:    		hsl(221, 52%, 72%);
+$flyingLight:		hsl(220, 52%, 77%);
+$flyingDark:		hsl(222, 20%, 50%);
+
+$ghost:     		hsl(225, 36%, 50%);
+$ghostLight:		hsl(224, 31%, 59%);
+$ghostDark:			hsl(223, 33%, 34%);
+
+$grass:     		hsl(114, 41%, 55%);
+$grassLight:		hsl(116, 43%, 64%);
+$grassDark:			hsl(116, 36%, 38%);
+
+$ground:    		hsl(20, 67%, 57%);
+$groundLight:		hsl(21, 66%, 64%);
+$groundDark:		hsl(22, 54%, 38%);
+
+$ice:       		hsl(170, 48%, 63%);
+$iceLight:			hsl(170, 47%, 70%);
+$iceDark:				hsl(170, 29%, 44%);
+
+$normal:    		hsl(207, 9%, 60%);
+$normalLight:		hsl(210, 6%, 67%);
+$normalDark:		hsl(207, 4%, 41%);
+
+$poison:    		hsl(281, 47%, 60%);
+$poisonLight:		hsl(281, 46%, 68%);
+$poisonDark:		hsl(281, 31%, 42%);
+
+$psychic:   		hsl(357, 92%, 71%);
+$psychicLight:	hsl(356, 92%, 76%);
+$psychicDark:		hsl(356, 38%, 49%);
+
+$rock:      		hsl(43, 36%, 66%);
+$rockLight:			hsl(44, 37%, 73%);
+$rockDark:			hsl(44, 19%, 46%);
+
+$steel: 	    	hsl(195, 29%, 49%);
+$steelLight:		hsl(200, 29%, 60%);
+$steelDark:			hsl(200, 28%, 35%);
+
+$water:   	  	hsl(211, 63%, 57%);
+$waterLight:		hsl(212, 63%, 66%);
+$waterDark:			hsl(211, 47%, 40%);
+
+$unknown:       hsl(160, 20%, 50%);
+$unknownLight:  hsl(160, 20%, 70%);
+$unknownDark:   hsl(160, 20%, 30%);
+
+/*********************************************
+**********************************************
+			GAME COLORS
+**********************************************
+*********************************************/
+
+$red:	          	hsl(3, 66%, 45%);
+$blue:	        	hsl(222, 60%, 60%);
+$yellow:	      	hsl(48, 82%, 52%);
+$gold:	        	hsl(44, 36%, 50%);
+$silver:	      	hsl(240, 11%, 63%);
+$crystal:	      	hsl(180, 30%, 64%);
+$ruby:	        	hsl(3, 66%, 45%);
+$sapphire:	    	hsl(222, 60%, 60%);
+$emerald:	      	hsl(130, 82%, 38%);
+$fireRed:	      	hsl(3, 66%, 45%);
+$leafGreen:	    	hsl(100, 43%, 46%);
+$diamond:       	hsl(255, 37%, 59%);
+$pearl:         	hsl(342, 68%, 59%);
+$platinum:      	hsl(240, 11%, 63%);
+$heartGold:     	hsl(44, 36%, 50%);
+$soulSilver:    	hsl(240, 11%, 63%);
+$blackGame:     	hsl(23, 22%, 28%);
+$whiteGame:     	hsl(240, 11%, 63%);
+$black2:        	hsl(23, 22%, 28%);
+$white2:        	hsl(240, 11%, 63%);
+$x:             	hsl(222, 60%, 60%);
+$y:             	hsl(3, 66%, 45%);
+$omegaRuby:     	hsl(3, 66%, 45%);
+$alphaSapphire: 	hsl(222, 60%, 60%);
+$sun:           	hsl(32, 83%, 53%);
+$moon:          	hsl(258, 93%, 60%);
+$ultraSun:     	 	hsl(32, 83%, 53%);
+$ultraMoon:				hsl(258, 93%, 60%);
+$LGPikachu:				hsl(48, 75%, 48%);
+$LGEevee:					hsl(40, 50%, 45%);
+$sword:						hsl(196, 99%, 47%);
+$shield:      	  hsl(337, 87%, 50%);
+$brilliantDiamond:hsl(255, 37%, 59%);
+$shiningPearl:    hsl(342, 68%, 59%);
+$legendsArceus: 	hsl(145, 49%, 56%);
