@@ -5,9 +5,9 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Chip from "@mui/material/Chip";
 
+import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { useParams } from "react-router-dom";
 import { GetDex } from '../utils/GetDex';
 import { ChooseDex, formatDexNum } from '../utils/utils';
 
