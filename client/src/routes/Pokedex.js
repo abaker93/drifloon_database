@@ -7,27 +7,17 @@ import Chip from '@mui/material/Chip';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
-import { GetDex } from '../utils/getDex';
-import { ChooseDex } from '../utils/utils';
+import { GetDex } from '../utils/GetDex';
+import { ChooseDex, formatDexNum, totalStats } from '../utils/utils';
 
 const Pokedex = () => {
 	const params = useParams();
 
-	const formatDexNum = num => {
-		num = String(num);
-		while (num.length < 3) num = '0' + num;
-		return num;
-	}
-
-	const totalStats = (hp, att, def, spatt, spdef, spd) => {
-		return(hp + att + def + spatt + spdef + spd)
-	}
-
 	const dex = ChooseDex(params.game).dex;
-	const title = ChooseDex(params.game).title;
+	const dexTitle = ChooseDex(params.game).dexTitle;
 
-	const getDex = GetDex(dex)
-	const latestDex = GetDex('gen8')
+	const getDex = GetDex(dex);
+	const latestDex = GetDex('gen8');
 
 	return (
 		<>
@@ -35,7 +25,12 @@ const Pokedex = () => {
 			
 			<Container maxWidth="xl" sx={{ mt: 10 }}>
 				<Box>
-					<h1>{title} Pokedex</h1>
+					<h1>{dexTitle} Pokédex</h1>
+				</Box>
+			</Container>
+
+			<Container maxWidth='xl' sx={{ mt: 4 }}>
+				<Box>
 					{getDex.map((p) => (
 						<Box key={p.id}>
 							<img style={{ width: '100px' }} src={p.artwork} alt={p.name} />
