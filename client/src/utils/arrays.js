@@ -30,7 +30,7 @@ export const games = [
   "Let's Go Pikachu & Let's Go Eevee",
   "Pokémon Go",
   "Sword & Shield",
-  "Brillinat Diamond & Shining Pearl",
+  "Brilliant Diamond & Shining Pearl",
   "Legends: Arceus",
   "Scarlet & Violet"
 ];

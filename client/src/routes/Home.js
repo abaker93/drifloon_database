@@ -116,13 +116,15 @@ const Home = () => {
 					<Box>
 						{games.map((game, i) => {
 							return (
-								<Chip
-									key={i}
-									label={game}
-									color="primary"
-									clickable
-									sx={{ mr: 1, mb: 1 }}
-								/>
+								<Link href="" underline="none">
+									<Chip
+										key={i}
+										label={game}
+										color="primary"
+										clickable
+										sx={{ mr: 1, mb: 1 }}
+									/>
+								</Link>
 							)
 						})}
 					</Box>
