@@ -25,3 +25,12 @@
 		}
 	}
 }
+
+.MuiCard-root {
+	@each $type in $types {
+		&[data-type="#{nth($type, 1)}"] {
+			color: $white;
+			background-color: nth($type, 2);
+		}
+	}
+}

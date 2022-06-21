@@ -1,4 +1,5 @@
 @import '../base/colors.scss';
+@import '../sass-utils/variables';
 
 #Game {
 	.pokedex {
@@ -10,7 +11,10 @@
 		.pokemon {
 			text-align: center;
 	
-			img { max-width: 100%; }
+			img {
+				max-width: 120px;
+				max-height: 120px;
+			}
 	
 			.no {
 				color: $textLight;
@@ -20,14 +24,22 @@
 			h3 { font-size: 18px; }
 	
 			.types {
-				display: grid;
-				grid-template-columns: repeat(2, max-content);
 				justify-content: center;
 	
 				p {
 					font-size: 12px;
 	
-					span { margin: 0 5px; }
+					span {
+						text-transform: capitalize;
+
+						&.divider { margin: 0 5px; }
+
+						@each $type in $types {
+							&[data-type="#{nth($type, 1)}"] {
+								color: nth($type, 2);
+							}
+						}
+					}
 				}
 			}
 		}

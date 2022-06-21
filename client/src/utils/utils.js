@@ -32,7 +32,7 @@ export const ChooseDex = (game) => {
 			info.dexTitle = "Gold & Silver";
 			info.gameTitle = "Pokémon Gold & Pokémon Silver";
 			info.primary = "johto";
-			info.artwork = "spriteNorGS";
+			info.artwork = "spriteNorG";
 			break;
 		case "crystal":
 			info.dex = "gen2";
@@ -144,7 +144,7 @@ export const ChooseDex = (game) => {
 			info.dexTitle = "Sword & Shield";
 			info.gameTitle = "Pokémon Sword & Pokémon Shield";
 			info.primary = "galar";
-			info.artwork = "spriteNorSS";
+			info.artwork = "spriteNorSwSh";
 			break;
 		case "brilliant-diamond-shining-pearl":
 			info.dex = "gen8";
@@ -164,8 +164,8 @@ export const ChooseDex = (game) => {
 			info.dex = "gen9";
 			info.dexTitle = "Scarlet & Violet";
 			info.gameTitle = "Pokémon Scarlet & Pokémon Violet";
-			info.primary = "kanto";
-			info.artwork = "spriteNorSV";
+			info.primary = "sV";
+			info.artwork = "artwork";
 			break;
 		default:
 			info.dex = "national";

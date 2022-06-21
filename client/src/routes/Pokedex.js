@@ -55,7 +55,8 @@ const Pokedex = () => {
 												{p.type2 ? <Chip label={p.type2} size="small" data-type={p.type2} /> : null}
 											</Box>
 											{dex === 'national'
-												? latestDex.filter(a => a.national === p.national)
+												? latestDex
+													.filter(a => a.national === p.national)
 													.map((p2, i) => (
 														<Box key={i} className="stats">
 															<Box>

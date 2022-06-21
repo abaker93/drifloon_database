@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet, useParams } from "react-router-dom";
 
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -6,9 +7,12 @@ import Link from "@mui/material/Link";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 
-import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { NationalInfo } from './gameRoutes/National';
+import { RedBlueInfo } from './gameRoutes/RedBlue';
+import { YellowInfo } from './gameRoutes/Yellow';
+
 import { GetDex } from '../utils/GetDex';
 import { ChooseDex, formatDexNum } from '../utils/utils';
 
@@ -61,21 +65,34 @@ const Game = () => {
 
 				<Container maxWidth="xl" sx={{ mt: 4 }}>
 					<Box>
+						{params.game === "national" ? (<NationalInfo />)
+							: params.game === "red-blue" ? (<RedBlueInfo />)
+							: params.game === "yellow" ? (<YellowInfo />)
+							: (<NationalInfo />)}
+					</Box>
+				</Container>
+
+				<Container maxWidth="xl" sx={{ mt: 4 }}>
+					<Box>
 						<h2>{dexTitle} Pokédex</h2>
 					</Box>
 					<Box className='pokedex'>
-						{getDex.map(p => (
-							<Link className='pokemon' href={`/${params.game}/pokedex/${formatDexNum(p[primary])}`} underline="none">
-								<Box key={p.id}>
-									<img src={p[artwork]} alt={p.name} />
-									<p><span className="no">No.</span> {formatDexNum(p[primary])}</p>
-									<h3>{p.name}</h3>
-									<div className="types">
-										<p>{p.type1}</p>{p.type2 ? <p><span>&bull;</span>{p.type2}</p> : null}
-									</div>
-								</Box>
-							</Link>
-						))}
+						{getDex
+							.filter(a => a[primary])
+							.sort((a, b) => a[primary] - b[primary])
+							.map(p => (
+								<Link key={p.id} className='pokemon' href={`/${params.game}/pokedex/${formatDexNum(p[primary])}`} underline="none">
+									<Box>
+										<img src={p[artwork]} alt={p.name} />
+										<p><span className="no">No.</span> {formatDexNum(p[primary])}</p>
+										<h3>{p.name}</h3>
+										<div className="types">
+											<p><span data-type={p.type1}>{p.type1}</span>{p.type2 ? <><span className="divider">&bull;</span><span data-type={p.type2}>{p.type2}</span></> : null}</p>
+										</div>
+									</Box>
+								</Link>
+							))
+						}
 					</Box>
 				</Container>
 

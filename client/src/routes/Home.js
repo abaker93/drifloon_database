@@ -27,56 +27,56 @@ const Home = () => {
 				<Box>
 					<h2>Quick Links</h2>
 					<Link href="/national/pokedex" underline="none">
-						<Card className="clickable quicklink" data-type-one="fighting">
+						<Card className="clickable quicklink" data-type="fighting">
 							<CardActionArea>
 								<CardContent>National Pokédex</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="/sword-shield/pokedex" underline="none">
-						<Card className="clickable quicklink" data-type-one="bug" sx={{ mt: 3 }}>
+						<Card className="clickable quicklink" data-type="bug" sx={{ mt: 3 }}>
 							<CardActionArea>
 								<CardContent>Sword & Shield Pokédex</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="/brilliant-diamond-shining-pearl/pokedex" underline="none">
-						<Card className="clickable quicklink" data-type-one="water" sx={{ mt: 3 }}>
+						<Card className="clickable quicklink" data-type="water" sx={{ mt: 3 }}>
 							<CardActionArea>
 								<CardContent>BD & SP Pokédex</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="/legends-arceus/pokedex" underline="none">
-						<Card className="clickable quicklink" data-type-one="dark" sx={{ mt: 3 }}>
+						<Card className="clickable quicklink" data-type="dark" sx={{ mt: 3 }}>
 							<CardActionArea>
 								<CardContent>Legends: Arceus Pokédex</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="/type-chart" underline="none">
-						<Card className="clickable quicklink" data-type-one="ice" sx={{ mt: 3 }}>
+						<Card className="clickable quicklink" data-type="ice" sx={{ mt: 3 }}>
 							<CardActionArea>
 								<CardContent>Type Chart</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="/moves" underline="none">
-						<Card className="clickable quicklink" data-type-one="poison" sx={{ mt: 3 }}>
+						<Card className="clickable quicklink" data-type="poison" sx={{ mt: 3 }}>
 							<CardActionArea>
 								<CardContent>Moves</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="/shiny" underline="none">
-						<Card className="clickable quicklink" data-type-one="fire" sx={{ mt: 3 }}>
+						<Card className="clickable quicklink" data-type="fire" sx={{ mt: 3 }}>
 							<CardActionArea>
 								<CardContent>Shiny Pokémon</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="pokemon-go/pokedex" underline="none">
-						<Card className="clickable quicklink" data-type-one="steel" sx={{ mt: 3 }}>
+						<Card className="clickable quicklink" data-type="steel" sx={{ mt: 3 }}>
 							<CardActionArea>
 								<CardContent>Pokémon Go Pokédex</CardContent>
 							</CardActionArea>
@@ -87,39 +87,13 @@ const Home = () => {
 
 			<Container maxWidth="xl" sx={{ mt: 4 }}>
 				<Box>
-					<h2>Pokémon by Pokédex</h2>
-					<Box>
-						<Chip
-							label="National Dex"
-							color="primary"
-							clickable
-							sx={{ mr: 1, mb: 1 }}
-						/>
-						{generations.map((gen, i) => {
-							return (
-								<Chip
-									key={i}
-									label={gen}
-									color="primary"
-									clickable
-									sx={{ mr: 1, mb: 1 }}
-								/>
-							)
-						})}
-					</Box>
-				</Box>
-			</Container>
-
-			<Container maxWidth="xl" sx={{ mt: 4 }}>
-				<Box>
-					<h2>Pokémon by Game</h2>
+					<h2>Pokédex by Game</h2>
 					<Box>
 						{games.map((game, i) => {
 							return (
-								<Link href="" underline="none">
+								<Link key={i} href={`./${game.url}/pokedex`} underline="none">
 									<Chip
-										key={i}
-										label={game}
+										label={game.title}
 										color="primary"
 										clickable
 										sx={{ mr: 1, mb: 1 }}
@@ -140,7 +114,7 @@ const Home = () => {
 								<Chip
 									key={i}
 									label={type}
-									data-type-one={type}
+									data-type={type}
 									clickable
 									sx={{ mr: 1, mb: 1 }}
 								/>
