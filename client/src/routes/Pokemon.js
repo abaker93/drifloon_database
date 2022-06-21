@@ -15,9 +15,17 @@ import { GetPoke } from '../utils/GetPoke';
 import { ChooseDex, formatDexNum, totalStats } from '../utils/utils';
 
 const Pokemon = () => {
-	// const params = useParams()
-	const getPoke = GetPoke('national', 1);
+	const params = useParams()
 
+	const dex = ChooseDex(params.game).dex;
+	const primary = ChooseDex(params.game).primary;
+	const pokedexId = parseInt(params.pokedexId);
+
+	console.log(dex)
+	console.log(primary)
+	console.log(pokedexId)
+
+	const getPoke = GetPoke(dex, primary, pokedexId);
 
 	return (
 		<>
@@ -31,10 +39,10 @@ const Pokemon = () => {
 
 			<Container maxWidth="xl" sx={{ mt: 4 }}>
 				<Box>
-					{getPoke.map(p => (
-						<>
+					{getPoke.map((p, i) => (
+						<Box key={i}>
 							<p>{p.name}</p>
-						</>
+						</Box>
 					))}
 				</Box>
 			</Container>
