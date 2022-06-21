@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -7,7 +8,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Chip from '@mui/material/Chip';
 
-import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { GetDex } from '../utils/GetDex';
@@ -35,7 +35,7 @@ const Pokedex = () => {
 				</Box>
 			</Container>
 
-			<Container maxWidth="xl" sx={{ mt: 10 }}>
+			<Container maxWidth="xl" sx={{ mt: 4 }}>
 				<Box className="pokedex">
 					{getDex
 						.filter(a => a[primary])
