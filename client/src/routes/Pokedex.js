@@ -10,8 +10,10 @@ import Chip from '@mui/material/Chip';
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
+import { ChooseDex } from "../utils/ChooseDex";
 import { GetDex } from '../utils/GetDex';
-import { ChooseDex, formatDexNum, totalStats } from '../utils/utils';
+import { formatDexNum, totalStats } from '../utils/utils';
 
 const Pokedex = () => {
 	const params = useParams();

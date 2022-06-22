@@ -1,6 +1,57 @@
-@import '../base/colors';
+@import './colors';
 @import '../sass-utils/variables';
 
+
+
+/**********************************************
+		CARD-ROOT
+**********************************************/
+.MuiCard-root {
+	position: relative;
+	top: 0;
+	left: 0;
+	transition: all ease-in-out 0.2s;
+	background: $grayLight;
+
+	&.clickable {
+		background-color: $primary;
+		.MuiCardContent-root { color: $white; }
+
+		&:hover, &:focus, &:active {
+			top: -20px;
+			left: 20px;
+			box-shadow:
+				rgba($primary, 0.4) -5px 5px,
+				rgba($primary, 0.3) -10px 10px,
+				rgba($primary, 0.2) -15px 15px,
+				rgba($primary, 0.1) -20px 20px,
+				rgba($primary, 0.05) -25px 25px;
+		}
+
+		@each $type in $types {
+			&[data-type="#{nth($type, 1)}"] {
+				background-color: nth($type, 2);
+	
+				&:hover, &:focus, &:active {
+					box-shadow:
+						rgba(nth($type, 2), 0.4) -5px 5px,
+						rgba(nth($type, 2), 0.3) -10px 10px,
+						rgba(nth($type, 2), 0.2) -15px 15px,
+						rgba(nth($type, 2), 0.1) -20px 20px,
+						rgba(nth($type, 2), 0.05) -25px 25px;
+				}
+			}
+		}
+	}
+
+	
+}
+
+
+
+/**********************************************
+		CHIP-ROOT
+**********************************************/
 .MuiChip-root {
 	font-family: $primaryFont;
 	text-transform: uppercase;
@@ -26,15 +77,11 @@
 	}
 }
 
-.MuiCard-root {
-	@each $type in $types {
-		&[data-type="#{nth($type, 1)}"] {
-			color: $white;
-			background-color: nth($type, 2);
-		}
-	}
-}
 
+
+/**********************************************
+		ALERT-ROOT
+**********************************************/
 .MuiAlert-root {
 	font-family: $primaryFont;
 	

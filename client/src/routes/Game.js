@@ -13,8 +13,9 @@ import { NationalInfo } from './gameRoutes/National';
 import { RedBlueInfo } from './gameRoutes/RedBlue';
 import { YellowInfo } from './gameRoutes/Yellow';
 
+import { ChooseDex } from "../utils/ChooseDex";
 import { GetDex } from '../utils/GetDex';
-import { ChooseDex, formatDexNum } from '../utils/utils';
+import { formatDexNum } from '../utils/utils';
 
 const Game = () => {
 	const params = useParams();

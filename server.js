@@ -472,8 +472,63 @@ async function callListRows(key) {
 			})
 		}
 		return gen9;
+	} else if (key === 'gen8moves') {
+		const gen8Moves = [];
+		const gen8MovesI = tablesClient.listRowsAsync({ parent: p.GEN_8_MOVES_TABLE })
+		for await (const move of gen8MovesI) {
+			const pokemon = [];
+			move.values.pokemon1	? move.values.pokemon1.listValue.values.map(p => pokemon.push(p.stringValue))	: '';
+			move.values.pokemon2	? move.values.pokemon2.listValue.values.map(p => pokemon.push(p.stringValue))	: '';
+			move.values.pokemon3	? move.values.pokemon3.listValue.values.map(p => pokemon.push(p.stringValue))	: '';
+			move.values.pokemon4	? move.values.pokemon4.listValue.values.map(p => pokemon.push(p.stringValue))	: '';
+			move.values.pokemon5	? move.values.pokemon5.listValue.values.map(p => pokemon.push(p.stringValue))	: '';
+			move.values.pokemon6	? move.values.pokemon6.listValue.values.map(p => pokemon.push(p.stringValue))	: '';
+			move.values.pokemon7	? move.values.pokemon7.listValue.values.map(p => pokemon.push(p.stringValue))	: '';
+			move.values.pokemon8	? move.values.pokemon8.listValue.values.map(p => pokemon.push(p.stringValue))	: '';
+
+			gen8Moves.push({
+				// data: move.values,
+				move:	move.values.moves			? move.values.moves.stringValue			: n,
+				url:	move.values.gen8Moves	? move.values.gen8Moves.stringValue	: n,
+
+				pokemon:	pokemon,
+
+				games:	move.values.games	?	move.values.games.listValue.values.map(g => {return(g.stringValue)}) : n,
+
+				moveType:	move.values.moveType	?	move.values.moveType.stringValue	: n,
+				level:		move.values.level			?	move.values.level.numberValue			: n,
+				hm:				move.values.hm				?	move.values.hm.numberValue				: n,
+				tm:				move.values.tm				?	move.values.tm.numberValue				: n,
+				method:		move.values.method		?	move.values.method.stringValue		: n,
+				
+				type:				move.values.type				?	move.values.type.stringValue				: n,
+				category:		move.values.category		?	move.values.category.stringValue		: n,
+				power:			move.values.power				?	move.values.power.numberValue				: n,
+				accuracy:		move.values.accuracy		?	move.values.accuracy.numberValue		: n,
+				PP:					move.values.PP					?	move.values.PP.numberValue					: n,
+				maxPP:			move.values.maxPP				?	move.values.maxPP.numberValue				: n,
+				contact:		move.values.contact			?	move.values.contact.boolValue				: n,
+				introduced:	move.values.introduced	?	move.values.introduced.numberValue	: n,
+				effects:		move.values.effects			?	move.values.effects.numberValue			: n,
+				moveTarget:	move.values.moveTarget	?	move.values.moveTarget.numberValue	: n,
+				
+				japanese:			move.values.japanese			?	move.values.japanese.numberValue			: n,
+				japaneseKata:	move.values.japaneseKata	?	move.values.japaneseKata.numberValue	: n,
+				french:				move.values.french				?	move.values.french.numberValue				: n,
+				spanish:			move.values.spanish				?	move.values.spanish.numberValue				: n,
+				korean:				move.values.korean				?	move.values.korean.numberValue				: n,
+				
+				descSwSh:	move.values.descSwSh	?	move.values.descSwSh.numberValue	: n,
+				descBDSP:	move.values.descBDSP	?	move.values.descBDSP.numberValue	: n,
+				descLA:		move.values.descLA		?	move.values.descLA.numberValue		: n,
+
+				updateTime: move.values.updateTime ?	move.values.updateTime.structValue.fields.seconds.numberValue : n,
+				id: move.values.id ? move.values.id.stringValue : n,
+			})
+		}
+		return gen8Moves;
 	} else {
-		return n;
+		return 'no data here';
 	}
 }
 
@@ -489,7 +544,7 @@ app.get('/api/:gen', async(req, res, next) => {
 		} else {
 			console.log(`SOURCE data from ${key.toUpperCase()}`)
 			results = await callListRows(key);
-			client.set(key, JSON.stringify(results), {EX: (60 * 15)});
+			client.set(key, JSON.stringify(results), {EX: (15)});
 		}
 
 		res.json(results)

@@ -1,1 +1,5 @@
+@import './colors';
+
+body, html { background: $bodyBackground; }
+
 img { max-width: 100%; }
