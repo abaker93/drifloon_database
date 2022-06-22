@@ -34,3 +34,32 @@
 		}
 	}
 }
+
+.MuiAlert-root {
+	font-family: $primaryFont;
+	
+	.MuiAlert-icon { color: $white; }
+	
+	.MuiAlert-message {
+
+		.MuiAlertTitle-root { color: $white; }
+		
+		p { color: $white; }
+		
+		ul {
+			padding-top: 10px;
+
+			li {
+				padding-left: 5px;
+
+				&::before {
+					content: '•';
+					color: #FFFFFF;
+					margin-right: 8px;
+				}
+
+				a { color: $white; }
+			}
+		}
+	}
+}
