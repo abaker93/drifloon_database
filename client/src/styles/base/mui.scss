@@ -1,4 +1,5 @@
 @import './colors';
+@import './gradients';
 @import '../sass-utils/variables';
 
 
@@ -41,6 +42,32 @@
 						rgba(nth($type, 2), 0.05) -25px 25px;
 				}
 			}
+		}
+
+		&.typeGradient {
+			@each $type1, $secondTypes in $dualTypes {
+				&[data-type-one="#{$type1}"] {
+					@each $type2, $grad in $secondTypes {
+						&[data-type-two="#{$type2}"] {
+							background: $grad;
+						}
+					}
+				}
+			}
+			// @each $type, $grad in $dualTypes {
+			// 	&[data-type="#{$type}"] {
+			// 		background: $grad;
+
+			// 		&:hover, &:focus, &:active {
+			// 			box-shadow:
+			// 				rgba($grad, 0.4) -5px 5px,
+			// 				rgba(nth($type, 2), 0.3) -10px 10px,
+			// 				rgba(nth($type, 2), 0.2) -15px 15px,
+			// 				rgba(nth($type, 2), 0.1) -20px 20px,
+			// 				rgba(nth($type, 2), 0.05) -25px 25px;
+			// 		}
+			// 	}
+			// }
 		}
 	}
 

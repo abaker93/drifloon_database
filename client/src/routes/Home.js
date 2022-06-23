@@ -29,56 +29,56 @@ const Home = () => {
 						<h2>Quick Links</h2>
 					</Box>
 					<Link href="/national/pokedex" underline="none">
-						<Card className="clickable quicklink" data-type="fighting" elevation="0">
+						<Card className="clickable quicklink" data-type="fighting" elevation={0}>
 							<CardActionArea>
 								<CardContent>National Pokédex</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="/sword-shield/pokedex" underline="none">
-						<Card className="clickable quicklink" data-type="bug" elevation="0" sx={{ mt: 2 }}>
+						<Card className="clickable quicklink" data-type="bug" elevation={0} sx={{ mt: 2 }}>
 							<CardActionArea>
 								<CardContent>Sword & Shield Pokédex</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="/brilliant-diamond-shining-pearl/pokedex" underline="none">
-						<Card className="clickable quicklink" data-type="water" elevation="0" sx={{ mt: 2 }}>
+						<Card className="clickable quicklink" data-type="water" elevation={0} sx={{ mt: 2 }}>
 							<CardActionArea>
 								<CardContent>BD & SP Pokédex</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="/legends-arceus/pokedex" underline="none">
-						<Card className="clickable quicklink" data-type="dark" elevation="0" sx={{ mt: 2 }}>
+						<Card className="clickable quicklink" data-type="dark" elevation={0} sx={{ mt: 2 }}>
 							<CardActionArea>
 								<CardContent>Legends: Arceus Pokédex</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="/type-chart" underline="none">
-						<Card className="clickable quicklink" data-type="ice" elevation="0" sx={{ mt: 2 }}>
+						<Card className="clickable quicklink" data-type="ice" elevation={0} sx={{ mt: 2 }}>
 							<CardActionArea>
 								<CardContent>Type Chart</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="/moves" underline="none">
-						<Card className="clickable quicklink" data-type="poison" elevation="0" sx={{ mt: 2 }}>
+						<Card className="clickable quicklink" data-type="poison" elevation={0} sx={{ mt: 2 }}>
 							<CardActionArea>
 								<CardContent>Moves</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="/shiny" underline="none">
-						<Card className="clickable quicklink" data-type="fire" elevation="0" sx={{ mt: 2 }}>
+						<Card className="clickable quicklink" data-type="fire" elevation={0} sx={{ mt: 2 }}>
 							<CardActionArea>
 								<CardContent>Shiny Pokémon</CardContent>
 							</CardActionArea>
 						</Card>
 					</Link>
 					<Link href="pokemon-go/pokedex" underline="none">
-						<Card className="clickable quicklink" data-type="steel" elevation="0" sx={{ mt: 2 }}>
+						<Card className="clickable quicklink" data-type="steel" elevation={0} sx={{ mt: 2 }}>
 							<CardActionArea>
 								<CardContent>Pokémon Go Pokédex</CardContent>
 							</CardActionArea>
@@ -139,7 +139,7 @@ const Home = () => {
 			<Container maxWidth="xl" sx={{ mt: 4 }}>
 				<Box>
 					<h2>Project Notes</h2>
-					<Card className="projectNotes" elevation="5">
+					<Card className="projectNotes" elevation={5} sx={{ mt: 2 }}>
 						<CardContent>
 							<h3>Drifloon Database is Making Moves!</h3>
 							<p><strong>We moved.</strong> Drifloon Database 1.0 was built using Airtable as the backend/API. Recently Google's Tables project was launched. While still in beta, it's a cheaper version of Airtable that is exactly what this project needs. So, now Drifloon Database is built on Node, React, and Tables!</p>

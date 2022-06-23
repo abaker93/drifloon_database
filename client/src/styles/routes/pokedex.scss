@@ -2,68 +2,70 @@
 	color: blue;
 
 	.pokedex {
-
 		.pokemon {
 			overflow: visible;
 
-			.MuiLink-root {
+			.MuiCardContent-root {
+				padding: 10px;
+				display: grid;
+				grid-template-columns: 100px auto;
+				column-gap: 10px;
 
-				.MuiCardContent-root {
-					padding: 10px;
+				img {
+					position: relative;
+					top: -30px;
+					width: 100px;
+				}
+
+				.info {
 					display: grid;
-					grid-template-columns: 100px auto;
-					column-gap: 10px;
-					
-					img {
-						position: relative;
-						top: -30px;
-						width: 100px;
+					row-gap: 10px;
+
+					.title {
+						display: grid;
+						grid-template-columns: min-content auto;
+						align-items: end;
+						column-gap: 5px;
+
+						h4 {
+							font-size: 15px;
+							opacity: 0.5;
+							color: $white;
+
+							.no {
+								font-size: 10px;
+								margin-right: 2px;
+							}
+						}
+
+						h3 {
+							font-size: 20px;
+							font-weight: 700;
+							color: $white;
+						}
 					}
 
-					.info {
+					.types .MuiChip-root:nth-child(2) {
+						margin-left: 7px;
+					}
+
+					.stats {
 						display: grid;
-						row-gap: 10px;
+						grid-auto-flow: column;
+						justify-content: flex-start;
+						column-gap: 7px;
+						text-align: center;
 
-						.title {
-							display: grid;
-							grid-template-columns: min-content auto;
-							align-items: end;
-							column-gap: 5px;
-
-							h4 {
-								font-size: 15px;
-								opacity: 0.5;
-
-								.no {
-									font-size: 10px;
-									margin-right: 2px;
-								}
-							}
-
-							h3 {
-								font-size: 20px;
-								font-weight: 700;
-							}
+						h5 {
+							font-size: 9px;
+							font-weight: 700;
+							text-transform: uppercase;
+							color: $white;
 						}
-
-						.types {
-
-							.MuiChip-root:nth-child(2) { margin-left: 7px; }
-						}
-
-						.stats {
-							display: grid;
-							grid-auto-flow: column;
-							justify-content: flex-start;
-							column-gap: 5px;
-							text-align: center;
-
-							h5 {
-								font-size: 9px;
-								font-weight: 700;
-								text-transform: uppercase;
-							}
-							p { font-size: 11px; }
+						
+						p {
+							font-size: 11px;
+							color: $white;
 						}
 					}
 				}
