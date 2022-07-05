@@ -98,6 +98,45 @@ async function callListRows(key) {
 				spd50Max:		pokemon.values.spd50Max		? pokemon.values.spd50Max.numberValue		: n,
 				spd100Min:	pokemon.values.spd100Min	? pokemon.values.spd100Min.numberValue	: n,
 				spd100Max:	pokemon.values.spd100Max	? pokemon.values.spd100Max.numberValue	: n,
+
+				
+				stats: {
+					hp: {
+						base:		pokemon.values.hp						? pokemon.values.hp.numberValue						: n,
+						min50:	pokemon.values.hp50Min			? pokemon.values.hp50Min.numberValue			: n,
+						max50:	pokemon.values.hp50Max			? pokemon.values.hp50Max.numberValue			: n,
+						min100:	pokemon.values.hp100Min			? pokemon.values.hp100Min.numberValue			: n,
+						max100:	pokemon.values.hp100Max			? pokemon.values.hp100Max.numberValue			: n,
+					},
+					att: {
+						base:		pokemon.values.att					? pokemon.values.att.numberValue					: n,
+						min50:	pokemon.values.att50Min			? pokemon.values.att50Min.numberValue			: n,
+						max50:	pokemon.values.att50Max			? pokemon.values.att50Max.numberValue			: n,
+						min100:	pokemon.values.att100Min		? pokemon.values.att100Min.numberValue		: n,
+						max100:	pokemon.values.att100Max		? pokemon.values.att100Max.numberValue		: n,
+					},
+					def: {
+						base:		pokemon.values.def					? pokemon.values.def.numberValue					: n,
+						min50:	pokemon.values.def50Min			? pokemon.values.def50Min.numberValue			: n,
+						max50:	pokemon.values.def50Max			? pokemon.values.def50Max.numberValue			: n,
+						min100:	pokemon.values.def100Min		? pokemon.values.def100Min.numberValue		: n,
+						max100:	pokemon.values.def100Max		? pokemon.values.def100Max.numberValue		: n,
+					},
+					sp: {
+						base:		pokemon.values.sp				? pokemon.values.sp.numberValue				: n,
+						min50:	pokemon.values.sp50Min		? pokemon.values.sp50Min.numberValue		: n,
+						max50:	pokemon.values.sp50Max		? pokemon.values.sp50Max.numberValue		: n,
+						min100:	pokemon.values.sp100Min	? pokemon.values.sp100Min.numberValue	: n,
+						max100:	pokemon.values.sp100Max	? pokemon.values.sp100Max.numberValue	: n,
+					},
+					spd: {
+						base:		pokemon.values.spd					? pokemon.values.spd.numberValue					: n,
+						min50:	pokemon.values.spd50Min			? pokemon.values.spd50Min.numberValue			: n,
+						max50:	pokemon.values.spd50Max			? pokemon.values.spd50Max.numberValue			: n,
+						min100:	pokemon.values.spd100Min		? pokemon.values.spd100Min.numberValue		: n,
+						max100:	pokemon.values.spd100Max		? pokemon.values.spd100Max.numberValue		: n,
+					}
+				},
 				
 				artwork:			pokemon.values.artwork			?	pokemon.values.artwork.stringValue			: n,
 				spriteNorRB:	pokemon.values.spriteNorRB	? pokemon.values.spriteNorRB.stringValue	: n,
@@ -488,7 +527,7 @@ async function callListRows(key) {
 
 			gen8Moves.push({
 				// data: move.values,
-				move:	move.values.moves			? move.values.moves.stringValue			: n,
+				move:	move.values.move			? move.values.move.stringValue			: n,
 				url:	move.values.gen8Moves	? move.values.gen8Moves.stringValue	: n,
 
 				pokemon:	pokemon,
@@ -544,7 +583,7 @@ app.get('/api/:gen', async(req, res, next) => {
 		} else {
 			console.log(`SOURCE data from ${key.toUpperCase()}`)
 			results = await callListRows(key);
-			client.set(key, JSON.stringify(results), {EX: (60 * 15)});
+			client.set(key, JSON.stringify(results), {EX: (15)});
 		}
 
 		res.json(results)

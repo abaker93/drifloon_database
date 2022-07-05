@@ -18,7 +18,7 @@ export const RedBlueInfo = () => {
 			<p>Unlike later generations, Red and Blue were not the same as their corresponding Japanese releases Pokémon Red and Green. Besides Pokémon distribution, the aspects of Red and Blue such as graphics, script, and sprite designs are instead based on Pokémon Blue.</p>
 			<p>Despite being released towards the end of Game Boy's lifespan, they quickly became the best-selling non-bundled games released for the Game Boy as well as being the best-selling role-playing games of all time.</p>
 			
-			<TableContainer maxWidth="xl" sx={{ mt: 4 }}>
+			<TableContainer sx={{ mt: 4 }}>
 				<h2>Details</h2>
 				<Table className="detailsTable">
 					<TableBody>

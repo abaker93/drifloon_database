@@ -15,6 +15,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PokemonError from '../components/PokemonError';
 
+import Moves from '../components/Moves';
+
 import { ChooseDex } from "../utils/ChooseDex";
 import { GetPoke } from '../utils/GetPoke';
 import { formatDexNum, formatURL, totalStats } from '../utils/utils';
@@ -265,9 +267,7 @@ const Pokemon = () => {
 						</Container>
 
 						<Container maxWidth="xl" sx={{ mt: 4 }}>
-							<h2>Moves</h2>
-							<h3>Level Up</h3>
-							<h3>Egg Moves</h3>
+							<Moves dex={dex} name={p.name} />
 						</Container>
 
 						<Container maxWidth="xl" sx={{ mt: 4 }}>
