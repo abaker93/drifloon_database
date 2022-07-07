@@ -17,7 +17,7 @@ button {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-weight: 600;
+	font-weight: 700;
 }
 
 h1 { font-size: 35px; }
@@ -34,3 +34,8 @@ p {
 }
 
 .small { font-size: 0.7em; }
+
+.japanese {
+	font-family: 'source-han-sans-japanese';
+	font-weight: 700;
+}

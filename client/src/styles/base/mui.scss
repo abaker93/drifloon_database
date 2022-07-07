@@ -54,20 +54,6 @@
 					}
 				}
 			}
-			// @each $type, $grad in $dualTypes {
-			// 	&[data-type="#{$type}"] {
-			// 		background: $grad;
-
-			// 		&:hover, &:focus, &:active {
-			// 			box-shadow:
-			// 				rgba($grad, 0.4) -5px 5px,
-			// 				rgba(nth($type, 2), 0.3) -10px 10px,
-			// 				rgba(nth($type, 2), 0.2) -15px 15px,
-			// 				rgba(nth($type, 2), 0.1) -20px 20px,
-			// 				rgba(nth($type, 2), 0.05) -25px 25px;
-			// 		}
-			// 	}
-			// }
 		}
 	}
 
@@ -100,6 +86,17 @@
 		&[data-type="#{nth($type, 1)}"] {
 			color: $white;
 			background-color: nth($type, 2);
+			
+			&.icon span::before {
+				content: '';
+				background-image: url('../../../public/assets/#{nth($type, 1)}.svg');
+				background-size: 100%;
+				background-position: center;
+				height: 9px;
+				width: 9px;
+				display: inline-block;
+				margin-right: 5px;
+			}
 		}
 	}
 }

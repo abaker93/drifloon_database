@@ -38,27 +38,27 @@ const Pokemon = () => {
 	};
 
 	return (
-		<>
+		<Box id="Pokemon">
 			<Header />
 
 			{getPoke.length === 0
 				? <PokemonError />
 				: getPoke.map((p, i) => (
-					<Box key={i}>
+					<Box key={i} data-type-one={p.type1} data-type-two={p.type2}>
 
-						<Container>
-							<Box className="header">
-								<p>{p.japaneseKata}</p>
-								<img src={p.artwork} alt={p.name} />
+						<Container className="header typeGradient">
+							<Box>
+								<p className="japanese">{p.japaneseKata}</p>
+								<img src={p.artwork} alt={`${p.name} artwork`} />
 							</Box>
 						</Container>
 
-						<Container maxWidth="xl" sx={{ mt: 4 }}>
+						<Container className="title" maxWidth="xl" sx={{ mt: 4 }}>
 							<h1><span><span className="no">No.</span>{formatDexNum(p[primary])}</span>{p.name}</h1>
-							<p>{p.category}</p>
+							<p className="category">{p.category}</p>
 							<Box className="types">
-								<Chip data-type={p.type1} label={p.type1} />
-								{p.type2 ? <Chip data-type={p.type2} label={p.type2} /> : null}
+								<Chip className="icon" data-type={p.type1} label={p.type1} />
+								{p.type2 ? <Chip className="icon" data-type={p.type2} label={p.type2} /> : null}
 							</Box>
 						</Container>
 
@@ -300,7 +300,7 @@ const Pokemon = () => {
 			}
 
 			<Footer />
-		</>
+		</Box>
 	)
 }
 
