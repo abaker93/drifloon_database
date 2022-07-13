@@ -8,13 +8,13 @@
 			.MuiCardContent-root {
 				padding: 10px;
 				display: grid;
-				grid-template-columns: 100px auto;
+				grid-template-columns: 80px auto;
 				column-gap: 10px;
 
 				img {
 					position: relative;
-					top: -30px;
-					width: 100px;
+					top: 0;
+					width: 80px;
 				}
 
 				.info {

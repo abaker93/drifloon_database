@@ -20,6 +20,27 @@
 	@each $type in $types {
 		[data-type-one="#{nth($type, 1)}"] {
 			.TabUnstyled-root.Mui-selected .chipTab { background: #{nth($type, 2)} }
+			.MuiCard-root.clickable {
+				background: #{nth($type, 2)};
+
+				&:hover, &:focus, &:active {
+					box-shadow:
+						rgba(nth($type, 2), 0.4) -5px 5px,
+						rgba(nth($type, 2), 0.3) -10px 10px,
+						rgba(nth($type, 2), 0.2) -15px 15px,
+						rgba(nth($type, 2), 0.1) -20px 20px,
+						rgba(nth($type, 2), 0.05) -25px 25px;
+				}
+
+				&.small {
+					&:hover, &:focus, &:active {
+						box-shadow:
+							rgba(nth($type, 2), 0.4) -5px 5px,
+							rgba(nth($type, 2), 0.2) -10px 10px,
+							rgba(nth($type, 2), 0.05) -15px 15px;
+					}
+				}
+			}
 		}
 	}
 
@@ -173,4 +194,12 @@
 			}
 		}
 	}
+
+	.abilities, .breeding {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		column-gap: 20px;
+	}
+
+	.breeding h2 { grid-column: 1 / 3; }
 }

@@ -226,12 +226,12 @@ const Pokemon = () => {
 							))}
 						</Container>
 
-						<Container maxWidth="xl" sx={{ mt: 4 }}>
+						<Container className="abilities" maxWidth="xl" sx={{ mt: 4 }}>
 							<Box>
 								{p.abilities.abilities.length > 1 ? <h2>Abilities</h2> : <h2>Ability</h2>}
 								{p.abilities.abilities.map((a, i) => (
 									<Link key={i} href={`/abilities/${formatURL(a)}`} underline="none">
-										<Card>
+										<Card className="clickable small">
 											<CardContent>
 												{a}
 											</CardContent>
@@ -242,7 +242,7 @@ const Pokemon = () => {
 							<Box>
 								<h2>Hidden Ability</h2>
 								<Link href={`/abilities/${formatURL(p.hiddenAbility.ability)}`} underline="none">
-									<Card>
+									<Card className="clickable small">
 										<CardContent>
 											{p.hiddenAbility.ability}
 										</CardContent>
@@ -251,13 +251,13 @@ const Pokemon = () => {
 							</Box>
 						</Container>
 
-						<Container maxWidth="xl" sx={{ mt: 4 }}>
+						<Container className="breeding" maxWidth="xl" sx={{ mt: 4 }}>
 							<h2>Breeding</h2>
 							<Box>
-								{p.eggGroups.eggGroups.length > 1 ? <h2>Egg Groups</h2> : <h2>Egg Group</h2>}
+								{p.eggGroups.eggGroups.length > 1 ? <h3>Egg Groups</h3> : <h3>Egg Group</h3>}
 								{p.eggGroups.eggGroups.map((e, i) => (
 									<Link key={i} href={`/egg-groups/${formatURL(e)}`} underline="none">
-										<Card>
+										<Card className="clickable small">
 											<CardContent>
 												{e}
 											</CardContent>
@@ -268,6 +268,7 @@ const Pokemon = () => {
 							<Box>
 								<h3>Egg Cycles</h3>
 								<p>{p.eggCycles}</p>
+								<p>{p.eggCycles * 257} steps</p>
 							</Box>
 						</Container>
 
