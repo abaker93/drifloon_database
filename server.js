@@ -583,7 +583,7 @@ app.get('/api/:gen', async(req, res, next) => {
 		} else {
 			console.log(`SOURCE data from ${key.toUpperCase()}`)
 			results = await callListRows(key);
-			client.set(key, JSON.stringify(results), {EX: (15)});
+			client.set(key, JSON.stringify(results), {EX: (15 * 60)});
 		}
 
 		res.json(results)

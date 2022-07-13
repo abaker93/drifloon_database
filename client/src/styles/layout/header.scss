@@ -1,6 +1,18 @@
+@import '../base/colors';
+
 #Header {
 	header {
 		background: none;
 		backdrop-filter: blur(8px);
+
+		&.scrollHeader {
+			border-bottom: 1px solid hsla(0, 0%, 0%, 0.05);
+			background-color: hsla(255, 100%, 100%, 0.3);
+		}
+
+		.MuiToolbar-root { padding: 15px 20px; }
+
+		.back { display: none; }
 	}
-}
+} 
+
