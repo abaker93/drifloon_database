@@ -1,0 +1,8 @@
+#Ability {
+	.pokemon {
+		.MuiLink-root:not(:last-child)::after {
+			content: ', ';
+			display: inline-block;
+		}
+	}
+}

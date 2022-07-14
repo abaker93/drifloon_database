@@ -14,6 +14,8 @@ import Chip from '@mui/material/Chip';
 import Tooltip from '@mui/material/Tooltip';
 
 import InfoIcon from '@mui/icons-material/Info';
+import MaleRoundedIcon from '@mui/icons-material/MaleRounded';
+import FemaleRoundedIcon from '@mui/icons-material/FemaleRounded';
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -216,7 +218,7 @@ const Pokemon = () => {
 							</TabsUnstyled>
 						</Container>
 
-						<Container maxWidth="xl" sx={{ mt: 4 }}>
+						<Container className="evolution" maxWidth="xl" sx={{ mt: 4 }}>
 							<h2>EVOLUTION</h2>
 						</Container>
 
@@ -272,42 +274,53 @@ const Pokemon = () => {
 							</Box>
 						</Container>
 
-						<Container maxWidth="xl" sx={{ mt: 4 }}>
+						<Container className="moreInfo" maxWidth="xl" sx={{ mt: 4 }}>
 							<h2>More Info</h2>
-							<Box>
+							<Box className="gendRatio">
 								<h3>Gender Ratio</h3>
-								<p>{(p.MGendRatio * 100).toFixed(2)}%</p>
-								<p>{(p.FGendRatio * 100).toFixed(2)}%</p>
+								<div
+									className="genderPie"
+									style={{
+										height: 50,
+										width: 50,
+										borderRadius: '50%',
+										backgroundImage: `conic-gradient(
+											hsl(208, 91%, 40%) ${p.MGendRatio * 100}%,
+											hsl(356, 92%, 76%) 0)`
+									}}
+								/>
+								<p><MaleRoundedIcon /> {(p.MGendRatio * 100).toFixed(2)}%</p>
+								<p><FemaleRoundedIcon /> {(p.FGendRatio * 100).toFixed(2)}%</p>
 							</Box>
-							<Box>
+							<Box className="height">
 								<h3>Height</h3>
 								<p>{(p.height / 2.54).toFixed(2)}"</p>
 								<p>{(p.height).toFixed(2)} cm</p>
 							</Box>
-							<Box>
+							<Box className="weight">
 								<h3>Weight</h3>
 								<p>{(p.weight * 2.205).toFixed(2)} lb</p>
 								<p>{(p.weight).toFixed(2)} kg</p>
 							</Box>
-							<Box>
+							<Box className="evYield">
 								<h3>EV Yield</h3>
 								{p.evYield.map((ev, i) => (
 									<Chip key={i} label={ev} size="small" />
 								))}
 							</Box>
-							<Box>
+							<Box className="catchRate">
 								<h3>Catch Rate</h3>
 								<p>{p.catchRate}</p>
 							</Box>
-							<Box>
+							<Box className="baseFriendship">
 								<h3>Base Friendship</h3>
 								<p>{p.baseFriendship}</p>
 							</Box>
-							<Box>
+							<Box className="baseExperience">
 								<h3>Base Experience</h3>
 								<p>{p.baseXP}</p>
 							</Box>
-							<Box>
+							<Box className="growthRate">
 								<h3>Growth Rate</h3>
 								<p>{p.growthRate}</p>
 							</Box>
@@ -322,14 +335,14 @@ const Pokemon = () => {
 											? (
 												<>
 													<Box>
-														<h3>Sword</h3>
+														<h3><span className="game sword">Sword</span></h3>
 														{p.galar ? <h6><span className="no">No.</span>{p.galar}</h6> : null}
 														<p>{p.swordText}</p>
 														{p.galarIOA ? <h6><span>Isle of Armor</span><span className="no">No.</span>{p.galarIOA}</h6> : null}
 														{p.galarCT ? <h6><span>Crown Tundra</span><span className="no">No.</span>{p.galarCT}</h6> : null}
 													</Box>
 													<Box>
-														<h3>Shield</h3>
+														<h3><span className="game shield">Shield</span></h3>
 														{p.galar ? <h6><span className="no">No.</span>{p.galar}</h6> : null}
 														<p>{p.shieldText}</p>
 														{p.galarIOA ? <h6><span>Isle of Armor</span><span className="no">No.</span>{p.galarIOA}</h6> : null}
@@ -342,12 +355,12 @@ const Pokemon = () => {
 											? (
 												<>
 													<Box>
-														<h3>Brilliant Diamond</h3>
+														<h3><span className="game brilliantDiamond">Brilliant Diamond</span></h3>
 														{p.sinnoh ? <h6><span className="no">No.</span>{p.sinnoh}</h6> : null}
 														<p>{p.brilliantDiamondText}</p>
 													</Box>
 													<Box>
-														<h3>Shining Pearl</h3>
+														<h3><span className="game shiningPearl">Shining Pearl</span></h3>
 														{p.sinnoh ? <h6><span className="no">No.</span>{p.sinnoh}</h6> : null}
 														<p>{p.shiningPearlText}</p>
 													</Box>
@@ -357,7 +370,7 @@ const Pokemon = () => {
 										{p.legendsArceusText
 											? (
 												<Box>
-													<h3>Legends: Arceus</h3>
+													<h3><span className="game legendsArceus">Legends: Arceus</span></h3>
 													{p.hisui ? <h6><span className="no">No.</span>{p.hisui}</h6> : null}
 													<p>{p.legendsArceusText}</p>
 												</Box>
@@ -368,15 +381,15 @@ const Pokemon = () => {
 							}
 						</Container>
 
-						<Container maxWidth="xl" sx={{ mt: 4 }}>
+						<Container className="locations" maxWidth="xl" sx={{ mt: 4 }}>
 							<h2>Locations</h2>
 						</Container>
 
-						<Container maxWidth="xl" sx={{ mt: 4 }}>
+						<Container className="moves" maxWidth="xl" sx={{ mt: 4 }}>
 							<Moves dex={dex} name={p.name} />
 						</Container>
 
-						<Container maxWidth="xl" sx={{ mt: 4 }}>
+						<Container className="translations" maxWidth="xl" sx={{ mt: 4 }}>
 							<h2>Names & Translations</h2>
 							<Box>
 								<Chip label="English" />
