@@ -566,6 +566,53 @@ async function callListRows(key) {
 			})
 		}
 		return gen8Moves;
+	} else if (key === 'abilities') {
+		const abilities = [];
+		const abilitiesI = tablesClient.listRowsAsync({ parent: p.ABILITIES_TABLE })
+		for await (const ability of abilitiesI) {
+			const gen3abilities = [];
+			ability.values.gen3abilities	? ability.values.gen3abilities.listValue.values.map(p => gen3abilities.push(p.stringValue))	: n;
+
+			const gen8abilities = [];
+			const gen8hiddenabilities = [];
+			ability.values.gen8Abilities				? ability.values.gen8Abilities.listValue.values.map(p => gen8abilities.push(p.stringValue))							: n;
+			ability.values.gen8HiddenAbilities	? ability.values.gen8HiddenAbilities.listValue.values.map(p => gen8hiddenabilities.push(p.stringValue))	: n;
+
+			abilities.push({
+				// data: ability.values,
+				ability:	ability.values.ability	? ability.values.ability.stringValue	: n,
+
+				effect:	ability.values.effect	? ability.values.effect.stringValue	: n,
+
+				gen3Description:	ability.values.gen3Description	? ability.values.gen3Description.stringValue	: n,
+				gen3Abilities:		gen3abilities,
+
+				gen4Description:	ability.values.gen4Description	? ability.values.gen4Description.stringValue	: n,
+
+				gen5Description:	ability.values.gen5Description	? ability.values.gen5Description.stringValue	: n,
+
+				gen6Description:	ability.values.gen6Description	? ability.values.gen6Description.stringValue	: n,
+
+				gen7Description:	ability.values.gen7Description	? ability.values.gen7Description.stringValue	: n,
+
+				gen8Description:			ability.values.gen8Description	? ability.values.gen8Description.stringValue	: n,
+				gen8Abilities:				gen8abilities,
+				gen8HiddenAbilities:	gen8hiddenabilities,
+
+				gen9Description:	ability.values.gen9Description	? ability.values.gen9Description.stringValue	: n,
+
+				japanese:			ability.values.japanese			? ability.values.japanese.stringValue			: n,
+				japaneseKata:	ability.values.japaneseKata	? ability.values.japaneseKata.stringValue	: n,
+				german:				ability.values.german				? ability.values.german.stringValue				: n,
+				french:				ability.values.french				? ability.values.french.stringValue				: n,
+				italian:			ability.values.italian			? ability.values.italian.stringValue			: n,
+				spanish:			ability.values.spanish			? ability.values.spanish.stringValue			: n,
+
+				updateTime: ability.values.updateTime ?	ability.values.updateTime.structValue.fields.seconds.numberValue : n,
+				id: ability.values.id ? ability.values.id.stringValue : n,
+			})
+		}
+		return abilities;
 	} else {
 		return 'no data here';
 	}
@@ -583,7 +630,7 @@ app.get('/api/:gen', async(req, res, next) => {
 		} else {
 			console.log(`SOURCE data from ${key.toUpperCase()}`)
 			results = await callListRows(key);
-			client.set(key, JSON.stringify(results), {EX: (15 * 60)});
+			client.set(key, JSON.stringify(results), {EX: (15)});
 		}
 
 		res.json(results)

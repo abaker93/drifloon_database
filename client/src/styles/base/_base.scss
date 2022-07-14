@@ -5,3 +5,41 @@ body, html { background: $bodyBackground; }
 img { max-width: 100%; }
 
 .hidden { display: none !important; }
+
+.game {
+	&.red								{ color: $red; }
+	&.blue							{ color: $blue; }
+	&.yellow						{ color: $yellow; }
+	&.gold							{ color: $gold; }
+	&.silver						{ color: $silver; }
+	&.crystal						{ color: $crystal; }
+	&.ruby							{ color: $ruby; }
+	&.sapphire					{ color: $sapphire; }
+	&.emerald						{ color: $emerald; }
+	&.fireRed						{ color: $fireRed; }
+	&.leafGreen					{ color: $leafGreen; }
+	&.diamond						{ color: $diamond; }
+	&.pearl							{ color: $pearl; }
+	&.platinum					{ color: $platinum; }
+	&.heartGold					{ color: $heartGold; }
+	&.soulSilver				{ color: $soulSilver; }
+	&.blackGame					{ color: $blackGame; }
+	&.whiteGame					{ color: $whiteGame; }
+	&.black2						{ color: $black2; }
+	&.white2						{ color: $white2; }
+	&.x									{ color: $x; }
+	&.y									{ color: $y; }
+	&.omegaRuby					{ color: $omegaRuby; }
+	&.alphaSapphire			{ color: $alphaSapphire; }
+	&.sun								{ color: $sun; }
+	&.moon							{ color: $moon; }
+	&.ultraSun 					{ color: $ultraSun; }
+	&.ultraMoon					{ color: $ultraMoon; }
+	&.LGPikachu					{ color: $LGPikachu; }
+	&.LGEevee						{ color: $LGEevee; }
+	&.sword							{ color: $sword; }
+	&.shield						{ color: $shield; }
+	&.brilliantDiamond	{ color: $brilliantDiamond; }
+	&.shiningPearl			{ color: $shiningPearl; }
+	&.legendsArceus			{ color: $legendsArceus; }
+}

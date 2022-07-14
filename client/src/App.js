@@ -14,6 +14,8 @@ const Home = lazy(() => import("./routes/Home"));
 const Game = lazy(() => import("./routes/Game"));
 const Pokedex = lazy(() => import("./routes/Pokedex"));
 const Pokemon = lazy(() => import("./routes/Pokemon"));
+const Abilities = lazy(() => import("./routes/Abilities"));
+const Ability = lazy(() => import("./routes/Ability"));
 const Gradients = lazy(() => import("./routes/Gradients"));
 
 const App = () => {
@@ -35,6 +37,10 @@ const App = () => {
                       <Route path=":pokedexAltId" element={<Pokemon />} />
                     </Route>
                   </Route>
+                </Route>
+                <Route path="abilities">
+                  <Route index elemnt={<Abilities />} />
+                  <Route path=":ability" element={<Ability />} />
                 </Route>
               </Route>
             </Routes>

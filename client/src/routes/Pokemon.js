@@ -313,7 +313,7 @@ const Pokemon = () => {
 							</Box>
 						</Container>
 
-						<Container maxWidth="xl" sx={{ mt: 4 }}>
+						<Container className="gameDescriptions" maxWidth="xl" sx={{ mt: 4 }}>
 							<h2>Text</h2>
 							{dex === 'gen8'
 								? (
