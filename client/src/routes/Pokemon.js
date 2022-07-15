@@ -223,6 +223,7 @@ const Pokemon = () => {
 						</Container>
 
 						<Container className="weaknesses" maxWidth="xl" sx={{ mt: 4 }}>
+							<h2>Weaknesses</h2>
 							{typesArray.map((t, i) => (
 								<Weakness key={i} attType={t} type1={p.type1} type2={p.type2} />
 							))}
@@ -286,11 +287,11 @@ const Pokemon = () => {
 										borderRadius: '50%',
 										backgroundImage: `conic-gradient(
 											hsl(208, 91%, 40%) ${p.MGendRatio * 100}%,
-											hsl(356, 92%, 76%) 0)`
+											hsl(357, 92%, 71%) 0)`
 									}}
 								/>
-								<p><MaleRoundedIcon /> {(p.MGendRatio * 100).toFixed(2)}%</p>
-								<p><FemaleRoundedIcon /> {(p.FGendRatio * 100).toFixed(2)}%</p>
+								<p><span className="male"><MaleRoundedIcon /></span>{(p.MGendRatio * 100).toFixed(2)}%</p>
+								<p><span className="female"><FemaleRoundedIcon /></span>{(p.FGendRatio * 100).toFixed(2)}%</p>
 							</Box>
 							<Box className="height">
 								<h3>Height</h3>
@@ -326,59 +327,121 @@ const Pokemon = () => {
 							</Box>
 						</Container>
 
-						<Container className="gameDescriptions" maxWidth="xl" sx={{ mt: 4 }}>
-							<h2>Text</h2>
-							{dex === 'gen8'
-								? (
-									<Box>
-										{p.swordText || p.shieldText
-											? (
-												<>
-													<Box>
-														<h3><span className="game sword">Sword</span></h3>
-														{p.galar ? <h6><span className="no">No.</span>{p.galar}</h6> : null}
-														<p>{p.swordText}</p>
-														{p.galarIOA ? <h6><span>Isle of Armor</span><span className="no">No.</span>{p.galarIOA}</h6> : null}
-														{p.galarCT ? <h6><span>Crown Tundra</span><span className="no">No.</span>{p.galarCT}</h6> : null}
+						<Container className="descriptions" maxWidth="xl" sx={{ mt: 4 }}>
+							<TabsUnstyled defaultValue={
+								dex === 'gen1' ? 0
+									: dex === 'gen2' ? 1
+									: dex === 'gen3' ? 2
+									: dex === 'gen4' ? 3
+									: dex === 'gen5' ? 4
+									: dex === 'gen6' ? 5
+									: dex === 'gen7' ? 6
+									: dex === 'gen8' ? 7
+									: dex === 'gen9' ? 8
+									: 7
+							}>
+								<TabsListUnstyled className="chipTabs">
+									<TabUnstyled>
+										<Chip label="Gen I" className="chipTab" clickable />
+									</TabUnstyled>
+									<TabUnstyled>
+										<Chip label="Gen II" className="chipTab" clickable />
+									</TabUnstyled>
+									<TabUnstyled>
+										<Chip label="Gen III" className="chipTab" clickable />
+									</TabUnstyled>
+									<TabUnstyled>
+										<Chip label="Gen IV" className="chipTab" clickable />
+									</TabUnstyled>
+									<TabUnstyled>
+										<Chip label="Gen V" className="chipTab" clickable />
+									</TabUnstyled>
+									<TabUnstyled>
+										<Chip label="Gen VI" className="chipTab" clickable />
+									</TabUnstyled>
+									<TabUnstyled>
+										<Chip label="Gen VII" className="chipTab" clickable />
+									</TabUnstyled>
+									<TabUnstyled>
+										<Chip label="Gen VIII" className="chipTab" clickable />
+									</TabUnstyled>
+									<TabUnstyled>
+										<Chip label="Gen IX" className="chipTab" clickable />
+									</TabUnstyled>
+								</TabsListUnstyled>
+								<TabPanelUnstyled value={0}>
+									Gen 1
+								</TabPanelUnstyled>
+								<TabPanelUnstyled value={1}>
+									Gen 2
+								</TabPanelUnstyled>
+								<TabPanelUnstyled value={2}>
+									Gen 3
+								</TabPanelUnstyled>
+								<TabPanelUnstyled value={3}>
+									Gen 4
+								</TabPanelUnstyled>
+								<TabPanelUnstyled value={4}>
+									Gen 5
+								</TabPanelUnstyled>
+								<TabPanelUnstyled value={5}>
+									Gen 6
+								</TabPanelUnstyled>
+								<TabPanelUnstyled value={6}>
+									Gen 7
+								</TabPanelUnstyled>
+								<TabPanelUnstyled value={7}>
+									{dex === 'gen8'
+									? (
+										<Box>
+											{p.swordText || p.shieldText
+												? (
+													<>
+														<Box className="flavorText">
+															<h3><span className="game sword">Sword</span></h3>
+															<p>{p.galar ? <span><span>No.</span>{formatDexNum(p.galar)}</span> : null}{p.swordText}</p>
+															{p.galarIOA ? <h6>Isle of Armor<span><span>No.</span>{formatDexNum(p.galarIOA)}</span></h6> : null}
+															{p.galarCT ? <h6>Crown Tundra<span><span>No.</span>{formatDexNum(p.galarCT)}</span></h6> : null}
+														</Box>
+														<Box className="flavorText">
+															<h3><span className="game shield">Shield</span></h3>
+															<p>{p.galar ? <span><span>No.</span>{formatDexNum(p.galar)}</span> : null}{p.shieldText}</p>
+															{p.galarIOA ? <h6>Isle of Armor<span><span>No.</span>{formatDexNum(p.galarIOA)}</span></h6> : null}
+															{p.galarCT ? <h6>Crown Tundra<span><span>No.</span>{formatDexNum(p.galarCT)}</span></h6> : null}
+														</Box>
+													</>
+												) : null
+											}
+											{p.brilliantDiamondText || p.shiningPearlText
+												? (
+													<>
+														<Box className="flavorText">
+															<h3><span className="game brilliantDiamond">Brilliant Diamond</span></h3>
+															<p>{p.sinnoh ? <span><span>No.</span>{formatDexNum(p.sinnoh)}</span> : null}{p.brilliantDiamondText}</p>
+														</Box>
+														<Box className="flavorText">
+															<h3><span className="game shiningPearl">Shining Pearl</span></h3>
+															<p>{p.sinnoh ? <span><span>No.</span>{formatDexNum(p.sinnoh)}</span> : null}{p.shiningPearlText}</p>
+														</Box>
+													</>
+												) : null
+											}
+											{p.legendsArceusText
+												? (
+													<Box className="flavorText">
+														<h3><span className="game legendsArceus">Legends: Arceus</span></h3>
+														<p>{p.hisui ? <span><span>No.</span>{formatDexNum(p.hisui)}</span> : null}{p.legendsArceusText}</p>
 													</Box>
-													<Box>
-														<h3><span className="game shield">Shield</span></h3>
-														{p.galar ? <h6><span className="no">No.</span>{p.galar}</h6> : null}
-														<p>{p.shieldText}</p>
-														{p.galarIOA ? <h6><span>Isle of Armor</span><span className="no">No.</span>{p.galarIOA}</h6> : null}
-														{p.galarCT ? <h6><span>Crown Tundra</span><span className="no">No.</span>{p.galarCT}</h6> : null}
-													</Box>
-												</>
-											) : null
-										}
-										{p.brilliantDiamondText || p.shiningPearlText
-											? (
-												<>
-													<Box>
-														<h3><span className="game brilliantDiamond">Brilliant Diamond</span></h3>
-														{p.sinnoh ? <h6><span className="no">No.</span>{p.sinnoh}</h6> : null}
-														<p>{p.brilliantDiamondText}</p>
-													</Box>
-													<Box>
-														<h3><span className="game shiningPearl">Shining Pearl</span></h3>
-														{p.sinnoh ? <h6><span className="no">No.</span>{p.sinnoh}</h6> : null}
-														<p>{p.shiningPearlText}</p>
-													</Box>
-												</>
-											) : null
-										}
-										{p.legendsArceusText
-											? (
-												<Box>
-													<h3><span className="game legendsArceus">Legends: Arceus</span></h3>
-													{p.hisui ? <h6><span className="no">No.</span>{p.hisui}</h6> : null}
-													<p>{p.legendsArceusText}</p>
-												</Box>
-											) : null
-										}
-									</Box>
-								)	: null
-							}
+												) : null
+											}
+										</Box>
+									)	: null
+								}
+								</TabPanelUnstyled>
+								<TabPanelUnstyled value={8}>
+									Gen 9
+								</TabPanelUnstyled>
+							</TabsUnstyled>
 						</Container>
 
 						<Container className="locations" maxWidth="xl" sx={{ mt: 4 }}>

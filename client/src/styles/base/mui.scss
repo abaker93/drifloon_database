@@ -46,6 +46,10 @@
 					rgba($primary, 0.3) -10px 10px,
 					rgba($primary, 0.2) -15px 15px;
 			}
+
+			.MuiCardContent-root {
+				&:last-child { padding-bottom: 12px; }
+			}
 		}
 
 		@each $type in $types {
@@ -182,13 +186,6 @@
 		TABSLISTUNSTYLED-ROOT
 **********************************************/
 .TabsListUnstyled-root {
-	&.chipTabs {
-		display: grid;
-		grid-template-columns: repeat(4, min-content);
-		column-gap: 7px;
-		align-items: center;
-	}
-
 	.TabUnstyled-root {
 		border: none;
 		background: none;
@@ -205,6 +202,9 @@
 				background-color: $primary;
 			}
 		}
+
+		.chipTab { margin-bottom: 7px; }
+		&:not(:last-child) .chipTab { margin-right: 7px; }
 	}
 }
 
