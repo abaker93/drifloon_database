@@ -12,6 +12,10 @@ import TabPanelUnstyled from "@mui/base/TabPanelUnstyled";
 import TabUnstyled from "@mui/base/TabUnstyled";
 import Chip from '@mui/material/Chip';
 import Tooltip from '@mui/material/Tooltip';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 import InfoIcon from '@mui/icons-material/Info';
 import MaleRoundedIcon from '@mui/icons-material/MaleRounded';
@@ -327,121 +331,131 @@ const Pokemon = () => {
 							</Box>
 						</Container>
 
-						<Container className="descriptions" maxWidth="xl" sx={{ mt: 4 }}>
-							<TabsUnstyled defaultValue={
-								dex === 'gen1' ? 0
-									: dex === 'gen2' ? 1
-									: dex === 'gen3' ? 2
-									: dex === 'gen4' ? 3
-									: dex === 'gen5' ? 4
-									: dex === 'gen6' ? 5
-									: dex === 'gen7' ? 6
-									: dex === 'gen8' ? 7
-									: dex === 'gen9' ? 8
-									: 7
-							}>
-								<TabsListUnstyled className="chipTabs">
-									<TabUnstyled>
-										<Chip label="Gen I" className="chipTab" clickable />
-									</TabUnstyled>
-									<TabUnstyled>
-										<Chip label="Gen II" className="chipTab" clickable />
-									</TabUnstyled>
-									<TabUnstyled>
-										<Chip label="Gen III" className="chipTab" clickable />
-									</TabUnstyled>
-									<TabUnstyled>
-										<Chip label="Gen IV" className="chipTab" clickable />
-									</TabUnstyled>
-									<TabUnstyled>
-										<Chip label="Gen V" className="chipTab" clickable />
-									</TabUnstyled>
-									<TabUnstyled>
-										<Chip label="Gen VI" className="chipTab" clickable />
-									</TabUnstyled>
-									<TabUnstyled>
-										<Chip label="Gen VII" className="chipTab" clickable />
-									</TabUnstyled>
-									<TabUnstyled>
-										<Chip label="Gen VIII" className="chipTab" clickable />
-									</TabUnstyled>
-									<TabUnstyled>
-										<Chip label="Gen IX" className="chipTab" clickable />
-									</TabUnstyled>
-								</TabsListUnstyled>
-								<TabPanelUnstyled value={0}>
-									Gen 1
-								</TabPanelUnstyled>
-								<TabPanelUnstyled value={1}>
-									Gen 2
-								</TabPanelUnstyled>
-								<TabPanelUnstyled value={2}>
-									Gen 3
-								</TabPanelUnstyled>
-								<TabPanelUnstyled value={3}>
-									Gen 4
-								</TabPanelUnstyled>
-								<TabPanelUnstyled value={4}>
-									Gen 5
-								</TabPanelUnstyled>
-								<TabPanelUnstyled value={5}>
-									Gen 6
-								</TabPanelUnstyled>
-								<TabPanelUnstyled value={6}>
-									Gen 7
-								</TabPanelUnstyled>
-								<TabPanelUnstyled value={7}>
-									{dex === 'gen8'
-									? (
-										<Box>
-											{p.swordText || p.shieldText
-												? (
-													<>
-														<Box className="flavorText">
-															<h3><span className="game sword">Sword</span></h3>
-															<p>{p.galar ? <span><span>No.</span>{formatDexNum(p.galar)}</span> : null}{p.swordText}</p>
-															{p.galarIOA ? <h6>Isle of Armor<span><span>No.</span>{formatDexNum(p.galarIOA)}</span></h6> : null}
-															{p.galarCT ? <h6>Crown Tundra<span><span>No.</span>{formatDexNum(p.galarCT)}</span></h6> : null}
-														</Box>
-														<Box className="flavorText">
-															<h3><span className="game shield">Shield</span></h3>
-															<p>{p.galar ? <span><span>No.</span>{formatDexNum(p.galar)}</span> : null}{p.shieldText}</p>
-															{p.galarIOA ? <h6>Isle of Armor<span><span>No.</span>{formatDexNum(p.galarIOA)}</span></h6> : null}
-															{p.galarCT ? <h6>Crown Tundra<span><span>No.</span>{formatDexNum(p.galarCT)}</span></h6> : null}
-														</Box>
-													</>
-												) : null
+						<Container id="descriptions" maxWidth="xl" sx={{ mt: 4 }}>
+							<Box>
+								<FormControl fullWidth>
+									<InputLabel id="generation">Generation</InputLabel>
+									<Select
+										defaultValue={
+											dex === 'gen1' ? 1
+											: dex === 'gen2' ? 2
+											: dex === 'gen3' ? 3
+											: dex === 'gen4' ? 4
+											: dex === 'gen5' ? 5
+											: dex === 'gen6' ? 6
+											: dex === 'gen7' ? 7
+											: dex === 'gen8' ? 8
+											: dex === 'gen9' ? 9
+											: 7
+										}
+										labelId="generation"
+										id="generation-select"
+										label="Generation"
+										className="linked"
+									>
+										{/* NOTE FOR LATER: ADD MORE LOGIC FOR NUMBERS BY GENERATION/GAME */}
+										<MenuItem value={1} data-type-one={p.type1} dense className="genSelect">
+											{dex === 'gen1' ?
+												(<Link underline="none">Gen I</Link>) :
+												(<Link href={`/red-blue/pokedex/${formatDexNum(pokedexId)}`} underline="none">Gen I</Link>)
 											}
-											{p.brilliantDiamondText || p.shiningPearlText
-												? (
-													<>
-														<Box className="flavorText">
-															<h3><span className="game brilliantDiamond">Brilliant Diamond</span></h3>
-															<p>{p.sinnoh ? <span><span>No.</span>{formatDexNum(p.sinnoh)}</span> : null}{p.brilliantDiamondText}</p>
-														</Box>
-														<Box className="flavorText">
-															<h3><span className="game shiningPearl">Shining Pearl</span></h3>
-															<p>{p.sinnoh ? <span><span>No.</span>{formatDexNum(p.sinnoh)}</span> : null}{p.shiningPearlText}</p>
-														</Box>
-													</>
-												) : null
+										</MenuItem>
+										<MenuItem value={2} data-type-one={p.type1} dense className="genSelect">
+											{dex === 'gen2' ?
+												(<Link underline="none">Gen II</Link>) :
+												(<Link href={`/gold-silver/pokedex/${formatDexNum(pokedexId)}`} underline="none">Gen II</Link>)
 											}
-											{p.legendsArceusText
-												? (
-													<Box className="flavorText">
-														<h3><span className="game legendsArceus">Legends: Arceus</span></h3>
-														<p>{p.hisui ? <span><span>No.</span>{formatDexNum(p.hisui)}</span> : null}{p.legendsArceusText}</p>
-													</Box>
-												) : null
+										</MenuItem>
+										<MenuItem value={3} data-type-one={p.type1} dense className="genSelect">
+											{dex === 'gen3' ?
+												(<Link underline="none">Gen III</Link>) :
+												(<Link href={`/ruby-sapphire/pokedex/${formatDexNum(pokedexId)}`} underline="none">Gen III</Link>)
 											}
-										</Box>
-									)	: null
-								}
-								</TabPanelUnstyled>
-								<TabPanelUnstyled value={8}>
-									Gen 9
-								</TabPanelUnstyled>
-							</TabsUnstyled>
+										</MenuItem>
+										<MenuItem value={4} data-type-one={p.type1} dense className="genSelect">
+											{dex === 'gen4' ?
+												(<Link underline="none">Gen IV</Link>) :
+												(<Link href={`/diamond-pearl/pokedex/${formatDexNum(pokedexId)}`} underline="none">Gen IV</Link>)
+											}
+										</MenuItem>
+										<MenuItem value={5} data-type-one={p.type1} dense className="genSelect">
+										{dex === 'gen5' ?
+												(<Link underline="none">Gen V</Link>) :
+												(<Link href={`/black-white/pokedex/${formatDexNum(pokedexId)}`} underline="none">Gen V</Link>)
+											}
+										</MenuItem>
+										<MenuItem value={6} data-type-one={p.type1} dense className="genSelect">
+											{dex === 'gen6' ?
+												(<Link underline="none">Gen VI</Link>) :
+												(<Link href={`/x-y/pokedex/${formatDexNum(pokedexId)}`} underline="none">Gen VI</Link>)
+											}
+										</MenuItem>
+										<MenuItem value={7} data-type-one={p.type1} dense className="genSelect">
+											{dex === 'gen7' ?
+												(<Link underline="none">Gen VII</Link>) :
+												(<Link href={`/sun-moon/pokedex/${formatDexNum(pokedexId)}`} underline="none">Gen VII</Link>)
+											}
+										</MenuItem>
+										<MenuItem value={8} data-type-one={p.type1} dense className="genSelect">
+										{dex === 'gen8' ?
+												(<Link underline="none">Gen VIII</Link>) :
+												(<Link href={`/sword-shield/pokedex/${formatDexNum(pokedexId)}`} underline="none">Gen VIII</Link>)
+											}
+										</MenuItem>
+										<MenuItem value={9} data-type-one={p.type1} dense className="genSelect">
+											{dex === 'gen9' ?
+												(<Link underline="none">Gen IX</Link>) :
+												(<Link href={`/scarlet-violet/pokedex/${formatDexNum(pokedexId)}`} underline="none">Gen IX</Link>)
+											}
+										</MenuItem>
+									</Select>
+								</FormControl>
+							</Box>
+
+							{dex === 'gen8' ? (
+								<Box>
+									{p.swordText || p.shieldText
+										? (
+											<>
+												<Box className="flavorText">
+													<h3><span className="game sword">Sword</span></h3>
+													<p>{p.galar ? <span><span>No.</span>{formatDexNum(p.galar)}</span> : null}{p.swordText}</p>
+													{p.galarIOA ? <h6>Isle of Armor<span><span>No.</span>{formatDexNum(p.galarIOA)}</span></h6> : null}
+													{p.galarCT ? <h6>Crown Tundra<span><span>No.</span>{formatDexNum(p.galarCT)}</span></h6> : null}
+												</Box>
+												<Box className="flavorText">
+													<h3><span className="game shield">Shield</span></h3>
+													<p>{p.galar ? <span><span>No.</span>{formatDexNum(p.galar)}</span> : null}{p.shieldText}</p>
+													{p.galarIOA ? <h6>Isle of Armor<span><span>No.</span>{formatDexNum(p.galarIOA)}</span></h6> : null}
+													{p.galarCT ? <h6>Crown Tundra<span><span>No.</span>{formatDexNum(p.galarCT)}</span></h6> : null}
+												</Box>
+											</>
+										) : null
+									}
+									{p.brilliantDiamondText || p.shiningPearlText
+										? (
+											<>
+												<Box className="flavorText">
+													<h3><span className="game brilliantDiamond">Brilliant Diamond</span></h3>
+													<p>{p.sinnoh ? <span><span>No.</span>{formatDexNum(p.sinnoh)}</span> : null}{p.brilliantDiamondText}</p>
+												</Box>
+												<Box className="flavorText">
+													<h3><span className="game shiningPearl">Shining Pearl</span></h3>
+													<p>{p.sinnoh ? <span><span>No.</span>{formatDexNum(p.sinnoh)}</span> : null}{p.shiningPearlText}</p>
+												</Box>
+											</>
+										) : null
+									}
+									{p.legendsArceusText
+										? (
+											<Box className="flavorText">
+												<h3><span className="game legendsArceus">Legends: Arceus</span></h3>
+												<p>{p.hisui ? <span><span>No.</span>{formatDexNum(p.hisui)}</span> : null}{p.legendsArceusText}</p>
+											</Box>
+										) : null
+									}
+								</Box>
+							)	: null }
 						</Container>
 
 						<Container className="locations" maxWidth="xl" sx={{ mt: 4 }}>
@@ -460,8 +474,7 @@ const Pokemon = () => {
 							</Box>
 							<Box>
 								<Chip label="Japanese" />
-								<p>{p.japanese}</p>
-								<p>{p.japaneseKata}</p>
+								<p><span className="japanese">{p.japaneseKata}</span> <span>({p.japanese})</span></p>
 							</Box>
 							<Box>
 								<Chip label="French" />
