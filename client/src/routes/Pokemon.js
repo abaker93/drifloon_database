@@ -263,7 +263,7 @@ const Pokemon = () => {
 							<Box>
 								{p.eggGroups.eggGroups.length > 1 ? <h3>Egg Groups</h3> : <h3>Egg Group</h3>}
 								{p.eggGroups.eggGroups.map((e, i) => (
-									<Link key={i} href={`/egg-groups/${formatURL(e)}`} underline="none">
+									<Link key={i} href={`/breeding/egg-groups/${formatURL(e)}`} underline="none">
 										<Card className="clickable small">
 											<CardContent>
 												{e}

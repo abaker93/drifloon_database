@@ -16,6 +16,9 @@ const Pokedex = lazy(() => import("./routes/Pokedex"));
 const Pokemon = lazy(() => import("./routes/Pokemon"));
 const Abilities = lazy(() => import("./routes/Abilities"));
 const Ability = lazy(() => import("./routes/Ability"));
+const Breeding = lazy(() => import("./routes/Breeding"));
+const EggGroups = lazy(() => import("./routes/EggGroups"));
+const EggGroup = lazy(() => import("./routes/EggGroup"));
 const Gradients = lazy(() => import("./routes/Gradients"));
 
 const App = () => {
@@ -41,6 +44,13 @@ const App = () => {
                 <Route path="abilities">
                   <Route index elemnt={<Abilities />} />
                   <Route path=":ability" element={<Ability />} />
+                </Route>
+                <Route path="breeding">
+                  <Route index elemnt={<Breeding />} />
+                  <Route path="egg-groups">
+                    <Route index element={<EggGroups />} />
+                    <Route path=":eggGroup" element={<EggGroup />} />
+                  </Route>
                 </Route>
               </Route>
             </Routes>

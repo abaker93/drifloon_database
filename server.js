@@ -613,6 +613,34 @@ async function callListRows(key) {
 			})
 		}
 		return abilities;
+	} else if (key === 'egggroups') {
+		const eggGroups = [];
+		const eggGroupsI = tablesClient.listRowsAsync({ parent: p.EGGGROUPS_TABLE })
+		for await (const eggGroup of eggGroupsI) {
+			const gen2EggGroups = [];
+			eggGroup.values.gen2EggGroups	? eggGroup.values.gen2EggGroups.listValue.values.map(p => gen2EggGroups.push(p.stringValue))	: n;
+
+			const gen3EggGroups = [];
+			eggGroup.values.gen3EggGroups	? eggGroup.values.gen3EggGroups.listValue.values.map(p => gen3EggGroups.push(p.stringValue))	: n;
+
+			const gen8EggGroups = [];
+			eggGroup.values.gen8EggGroups	? eggGroup.values.gen8EggGroups.listValue.values.map(p => gen8EggGroups.push(p.stringValue))	: n;
+
+			eggGroups.push({
+				// data: eggGroup.values,
+				eggGroup:	eggGroup.values.group	? eggGroup.values.group.stringValue	: n,
+
+				description:	eggGroup.values.description	? eggGroup.values.description.stringValue	: n,
+
+				gen2EggGroups:	gen2EggGroups,
+				gen3EggGroups:	gen3EggGroups,
+				gen8EggGroups:	gen8EggGroups,
+
+				updateTime:	eggGroup.values.updateTime	? eggGroup.values.updateTime.structValue.fields.seconds.numberValue	: n,
+				id:	eggGroup.values.id	? eggGroup.values.id.stringValue	: n,
+			})
+		}
+		return eggGroups;
 	} else {
 		return 'no data here';
 	}
