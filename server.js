@@ -377,6 +377,20 @@ async function callListRows(key) {
 			pokemon.values.gen8Alt1		? pokemon.values.gen8Alt1.listValue.values.map(alt => altURLs.push(alt.stringValue))		: n;
 			pokemon.values.gen8Alt2		? pokemon.values.gen8Alt2.listValue.values.map(alt => altURLs.push(alt.stringValue))		: '';
 
+			const moves = [];
+			pokemon.values.moves1	? pokemon.values.moves1.listValue.values.map(m => moves.push(m.stringValue))	: '';
+			pokemon.values.moves2	? pokemon.values.moves2.listValue.values.map(m => moves.push(m.stringValue))	: '';
+			pokemon.values.moves3	? pokemon.values.moves3.listValue.values.map(m => moves.push(m.stringValue))	: '';
+			pokemon.values.moves4	? pokemon.values.moves4.listValue.values.map(m => moves.push(m.stringValue))	: '';
+			pokemon.values.moves5	? pokemon.values.moves5.listValue.values.map(m => moves.push(m.stringValue))	: '';
+			pokemon.values.moves6	? pokemon.values.moves6.listValue.values.map(m => moves.push(m.stringValue))	: '';
+			pokemon.values.moves7	? pokemon.values.moves7.listValue.values.map(m => moves.push(m.stringValue))	: '';
+			pokemon.values.moves8	? pokemon.values.moves8.listValue.values.map(m => moves.push(m.stringValue))	: '';
+
+			const locations = [];
+			pokemon.values.locations1	? pokemon.values.locations1.listValue.values.map(l => locations.push(l.stringValue))	: '';
+			pokemon.values.locations2	? pokemon.values.locations2.listValue.values.map(l => locations.push(l.stringValue))	: '';
+
 			gen8.push({
 				// data: pokemon.values,
 				name:			pokemon.values.name 		?	pokemon.values.name.stringValue 		: n,
@@ -474,6 +488,9 @@ async function callListRows(key) {
 					}
 				},
 
+				moves:			moves,
+				locations:	locations,
+
 				altForms: {
 					forms:	altForms,
 					urls:		altURLs,
@@ -566,6 +583,39 @@ async function callListRows(key) {
 			})
 		}
 		return gen8Moves;
+	} else if (key === 'gen8loc') {
+		const gen8Loc = [];
+		const gen8LocI = tablesClient.listRowsAsync({ parent: p.GEN_8_LOC_TABLE })
+		for await (const loc of gen8LocI) {
+			const pokemon = [];
+			loc.values.pokemon1	? loc.values.pokemon1.listValue.values.map(p => pokemon.push(p.stringValue))	: '';
+
+			const times = [];
+			loc.values.times	? loc.values.times.listValue.values.map(t => times.push(t.stringValue))	: '';
+
+			const games = [];
+			loc.values.game	? loc.values.game.listValue.values.map(g => games.push(g.stringValue))	: '';
+
+			gen8Loc.push({
+				// data: loc.values,
+				location:	loc.values.location	? loc.values.location.stringValue	: n,
+				games:		games,
+
+				method:						loc.values.method						? loc.values.method.stringValue						: n,
+				method2:					loc.values.method2					? loc.values.method2.stringValue					: n,
+				times:						times,
+				rarity:						loc.values.rarity						? loc.values.rarity.stringValue						: n,
+				rarityPercentage:	loc.values.rarityPercentage	? loc.values.rarityPercentage.numberValue	: n,
+				minLevel:					loc.values.minLevel					? loc.values.minLevel.numberValue					: n,
+				maxLevel:					loc.values.maxLevel					? loc.values.maxLevel.numberValue					: n,
+
+				pokemon:	pokemon,
+
+				updateTime: loc.values.updateTime ?	loc.values.updateTime.structValue.fields.seconds.numberValue : n,
+				id: loc.values.id ? loc.values.id.stringValue : n,
+			})
+		}
+		return gen8Loc;
 	} else if (key === 'abilities') {
 		const abilities = [];
 		const abilitiesI = tablesClient.listRowsAsync({ parent: p.ABILITIES_TABLE })
@@ -615,7 +665,7 @@ async function callListRows(key) {
 		return abilities;
 	} else if (key === 'egggroups') {
 		const eggGroups = [];
-		const eggGroupsI = tablesClient.listRowsAsync({ parent: p.EGGGROUPS_TABLE })
+		const eggGroupsI = tablesClient.listRowsAsync({ parent: p.EGG_GROUPS_TABLE })
 		for await (const eggGroup of eggGroupsI) {
 			const gen2EggGroups = [];
 			eggGroup.values.gen2EggGroups	? eggGroup.values.gen2EggGroups.listValue.values.map(p => gen2EggGroups.push(p.stringValue))	: n;

@@ -314,6 +314,26 @@
 		}
 	}
 
+	.locations {
+		.MuiTableCell-root {
+			h3 {
+				font-size: 15px;
+
+				&:not(:last-child) { margin-bottom: 5px; }
+			}
+
+			span {
+				&:not(:last-child) {
+					&::after { content: ', ' }
+				}
+
+				.MuiLink-root {
+					&:hover, &:focus { text-decoration: underline; }
+				}
+			}
+		}
+	}
+
 	.translations {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);

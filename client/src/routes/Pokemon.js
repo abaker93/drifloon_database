@@ -26,6 +26,7 @@ import Footer from "../components/Footer";
 import PokemonError from '../components/PokemonError';
 
 import Moves from '../components/Moves';
+import Locations from '../components/Locations';
 
 import { ChooseDex } from "../utils/ChooseDex";
 import { GetPoke } from '../utils/GetPoke';
@@ -418,13 +419,13 @@ const Pokemon = () => {
 										? (
 											<>
 												<Box className="flavorText">
-													<h3><span className="game sword">Sword</span></h3>
+													<h3 className="game sword">Sword</h3>
 													<p>{p.galar ? <span><span>No.</span>{formatDexNum(p.galar)}</span> : null}{p.swordText}</p>
 													{p.galarIOA ? <h6>Isle of Armor<span><span>No.</span>{formatDexNum(p.galarIOA)}</span></h6> : null}
 													{p.galarCT ? <h6>Crown Tundra<span><span>No.</span>{formatDexNum(p.galarCT)}</span></h6> : null}
 												</Box>
 												<Box className="flavorText">
-													<h3><span className="game shield">Shield</span></h3>
+													<h3 className="game shield">Shield</h3>
 													<p>{p.galar ? <span><span>No.</span>{formatDexNum(p.galar)}</span> : null}{p.shieldText}</p>
 													{p.galarIOA ? <h6>Isle of Armor<span><span>No.</span>{formatDexNum(p.galarIOA)}</span></h6> : null}
 													{p.galarCT ? <h6>Crown Tundra<span><span>No.</span>{formatDexNum(p.galarCT)}</span></h6> : null}
@@ -436,11 +437,11 @@ const Pokemon = () => {
 										? (
 											<>
 												<Box className="flavorText">
-													<h3><span className="game brilliantDiamond">Brilliant Diamond</span></h3>
+													<h3 className="game brilliantDiamond">Brilliant Diamond</h3>
 													<p>{p.sinnoh ? <span><span>No.</span>{formatDexNum(p.sinnoh)}</span> : null}{p.brilliantDiamondText}</p>
 												</Box>
 												<Box className="flavorText">
-													<h3><span className="game shiningPearl">Shining Pearl</span></h3>
+													<h3 className="game shiningPearl">Shining Pearl</h3>
 													<p>{p.sinnoh ? <span><span>No.</span>{formatDexNum(p.sinnoh)}</span> : null}{p.shiningPearlText}</p>
 												</Box>
 											</>
@@ -449,7 +450,7 @@ const Pokemon = () => {
 									{p.legendsArceusText
 										? (
 											<Box className="flavorText">
-												<h3><span className="game legendsArceus">Legends: Arceus</span></h3>
+												<h3 className="game legendsArceus">Legends: Arceus</h3>
 												<p>{p.hisui ? <span><span>No.</span>{formatDexNum(p.hisui)}</span> : null}{p.legendsArceusText}</p>
 											</Box>
 										) : null
@@ -460,6 +461,7 @@ const Pokemon = () => {
 
 						<Container className="locations" maxWidth="xl" sx={{ mt: 4 }}>
 							<h2>Locations</h2>
+							<Locations dex={dex} pokemon={p.name} />
 						</Container>
 
 						<Container className="moves" maxWidth="xl" sx={{ mt: 4 }}>
