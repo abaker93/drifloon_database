@@ -116,6 +116,8 @@
 		}
 	}
 
+	span { font-size: 12px; }
+
 	@each $type in $types {
 		&[data-type="#{nth($type, 1)}"] {
 			color: $white;

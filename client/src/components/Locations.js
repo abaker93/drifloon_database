@@ -40,7 +40,7 @@ const Locations = (...params) => {
 					{sword || shield ?
 						isEqual(sword, shield) ? (
 							<TableRow>
-								<TableCell sx={{ width: 200 }}>
+								<TableCell sx={{ maxWidth: 200 }}>
 									<h3 className='game sword'>Sword</h3>
 									<h3 className='game shield'>Shield</h3>
 								</TableCell>
@@ -59,7 +59,7 @@ const Locations = (...params) => {
 						) : (
 							<>
 								<TableRow>
-									<TableCell sx={{ width: 200 }}>
+									<TableCell sx={{ maxWidth: 200 }}>
 										<h3 className='game sword'>Sword</h3>
 									</TableCell>
 									<TableCell>
@@ -75,7 +75,7 @@ const Locations = (...params) => {
 									</TableCell>
 								</TableRow>
 								<TableRow>
-									<TableCell sx={{ width: 200 }}>
+									<TableCell sx={{ maxWidth: 200 }}>
 										<h3 className='game shield'>Shield</h3>
 									</TableCell>
 									<TableCell>
@@ -97,7 +97,7 @@ const Locations = (...params) => {
 					{brilliantDiamond || shiningPearl ?
 						isEqual(brilliantDiamond, shiningPearl) ? (
 							<TableRow>
-								<TableCell sx={{ width: 200 }}>
+								<TableCell sx={{ maxWidth: 200 }}>
 									<h3 className='game brilliantDiamond'>Brilliant Diamond</h3>
 									<h3 className='game shiningPearl'>Shining Pearl</h3>
 								</TableCell>
@@ -116,7 +116,7 @@ const Locations = (...params) => {
 						) : (
 							<>
 								<TableRow>
-									<TableCell sx={{ width: 200 }}>
+									<TableCell sx={{ maxWidth: 200 }}>
 										<h3 className='game brilliantDiamond'>Brilliant Diamond</h3>
 									</TableCell>
 									<TableCell>
@@ -132,7 +132,7 @@ const Locations = (...params) => {
 									</TableCell>
 								</TableRow>
 								<TableRow>
-									<TableCell sx={{ width: 200 }}>
+									<TableCell sx={{ maxWidth: 200 }}>
 										<h3 className='game shiningPearl'>Shining Pearl</h3>
 									</TableCell>
 									<TableCell>
@@ -153,7 +153,7 @@ const Locations = (...params) => {
 					
 					{legendsArceus ? (
 						<TableRow>
-							<TableCell sx={{ width: 200 }}>
+							<TableCell sx={{ maxWidth: 200 }}>
 								<h3 className='game legendsArceus'>Legends: Arceus</h3>
 							</TableCell>
 							<TableCell>
